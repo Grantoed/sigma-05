@@ -11,6 +11,9 @@
   --alt-title-color: #7eb693;
   --text-color: #525c60;
   --search-bar-color: #fafafa;
+  --backdrop-color: rgba(244, 244, 244, 0.82);
+  --shadow-color: rgba(167, 167, 167, 0.25);
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -24,6 +27,7 @@ body {
 
 a {
   text-decoration: none;
+  color: currentColor;
 }
 
 a:focus {

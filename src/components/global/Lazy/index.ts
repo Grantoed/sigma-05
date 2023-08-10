@@ -1,1 +1,1 @@
-export { default } from "./Lazy";
+export * from "./Lazy";

@@ -1,9 +1,5 @@
 import React from "react";
 
-type Props = {};
-
-const Loader = (props: Props) => {
+export const Loader = () => {
   return <div>Loader</div>;
 };
-
-export default Loader;

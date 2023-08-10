@@ -1,5 +1,5 @@
 import React, { lazy } from "react";
-import Lazy from "@/components/global/Lazy";
+import { Lazy } from "src/components/global/Lazy";
 
 const LazyHome = lazy(() => import("./Home"));
 
