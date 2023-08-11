@@ -20,7 +20,7 @@ import {
   TypographyProps,
 } from "styled-system";
 
-type Props = ColorProps &
+export type BoxProps = ColorProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
@@ -30,7 +30,7 @@ type Props = ColorProps &
   PositionProps &
   TypographyProps;
 
-export const Box = styled.div<Props>`
+export const Box = styled.div<BoxProps>`
   ${color};
   ${space};
   ${layout};

@@ -2,8 +2,11 @@ const colors = Object.freeze({
   ac: "var(--accent-color)",
   mbgc: "var(--main-bg-color)",
   abgc: "var(--alt-bg-color)",
+  hbgc: "var(--hero-bg-color)",
   mtc: "var(--main-title-color)",
+  mtch: "var(--main-title-color-hover)",
   atc: "var(--alt-title-color)",
+  atch: "var(--alt-title-color-hover)",
   tc: "var(--text-color)",
   sbc: "var(--search-bar-color)",
   shadow: "var(--shadow-color)",
@@ -13,7 +16,7 @@ const colors = Object.freeze({
 const fonts = Object.freeze({
   tf: "var(--text-font)",
   mtf: "var(--main-title-font)",
-  atf: "var(--lt-title-font)",
+  atf: "var(--alt-title-font)",
 });
 
 const lineHeights = Object.freeze({
@@ -46,6 +49,7 @@ export const theme = {
   lineHeights,
   radii: {
     default: "30px",
+    cart: "33px",
     searchBar: "36px",
     buttons: "16px",
     round: "50%",
