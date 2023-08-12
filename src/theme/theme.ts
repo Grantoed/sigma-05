@@ -9,6 +9,9 @@ const colors = Object.freeze({
   atch: "var(--alt-title-color-hover)",
   tc: "var(--text-color)",
   sbc: "var(--search-bar-color)",
+  buttonIcon: "var(--button-icon-color)",
+  star: "var(--star-color)",
+  discount: "var(--discount-color)",
   shadow: "var(--shadow-color)",
   backdrop: "var(--backdrop-color)",
 });
@@ -48,6 +51,8 @@ export const theme = {
   },
   lineHeights,
   radii: {
+    category: "8px",
+    points: "20px",
     default: "30px",
     cart: "33px",
     searchBar: "36px",

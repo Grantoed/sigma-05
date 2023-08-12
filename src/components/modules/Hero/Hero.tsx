@@ -5,13 +5,11 @@ import { Subheading } from "src/components/global/Subheading";
 import { Button } from "src/components/global/Button";
 import { useTheme } from "styled-components";
 
-type Props = {};
-
-export const Hero = (props: Props) => {
+export const Hero = () => {
   const theme = useTheme();
   return (
     <Section>
-      <Container px={260} py={245}>
+      <Container py={245}>
         <TextWrapper>
           <Subheading>100% Natural Food</Subheading>
           <Title>Choose the best healthier way of life</Title>

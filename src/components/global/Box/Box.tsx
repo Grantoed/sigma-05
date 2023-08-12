@@ -1,43 +1,7 @@
-import styled from "styled-components";
-import {
-  color,
-  space,
-  layout,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  typography,
-  ColorProps,
-  SpaceProps,
-  LayoutProps,
-  FlexboxProps,
-  GridProps,
-  BackgroundProps,
-  BorderProps,
-  PositionProps,
-  TypographyProps,
-} from "styled-system";
+import React from "react";
+import { StyledBox, BoxProps } from "./Box.styled";
+import { ChildrenProp } from "src/types/childrenProp";
 
-export type BoxProps = ColorProps &
-  SpaceProps &
-  LayoutProps &
-  FlexboxProps &
-  GridProps &
-  BackgroundProps &
-  BorderProps &
-  PositionProps &
-  TypographyProps;
-
-export const Box = styled.div<BoxProps>`
-  ${color};
-  ${space};
-  ${layout};
-  ${flexbox};
-  ${grid};
-  ${background};
-  ${border};
-  ${position};
-  ${typography};
-`;
+export const Box = ({ children, ...props }: ChildrenProp & BoxProps) => {
+  return <StyledBox {...props}>{children}</StyledBox>;
+};
