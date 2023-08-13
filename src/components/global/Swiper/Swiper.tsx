@@ -1,8 +1,20 @@
+import SwiperCore, { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/pagination";
+import "./index.css";
 import { ReviewCard } from "../ReviewCard";
 
+SwiperCore.use([Pagination]);
+
 export const SwiperCarousel = () => {
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index: number, className: string) {
+      return `<span class="${className}"></span>`;
+    },
+  };
+
   return (
     <Swiper
       style={{ marginTop: "60px" }}
@@ -10,6 +22,10 @@ export const SwiperCarousel = () => {
       slidesPerView={1}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
+      pagination={pagination}
+      modules={[Pagination]}
+      className="mySwiper"
+      speed={1500}
     >
       <SwiperSlide>
         <ReviewCard
@@ -35,7 +51,6 @@ export const SwiperCarousel = () => {
           role="consumer"
         />
       </SwiperSlide>
-      ...
     </Swiper>
   );
 };

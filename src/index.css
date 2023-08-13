@@ -8,6 +8,7 @@
   --main-bg-color: #fff;
   --alt-bg-color: #f9f8f8;
   --hero-bg-color: #f1eff0;
+  --gallery-bg-color: #f1f8f4;
   --main-title-color: #274c5b;
   --main-title-color-hover: rgba(39, 76, 91, 0.9);
   --alt-title-color: #7eb693;
@@ -47,15 +48,6 @@ a:focus {
 
 ul {
   list-style: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  cursor: default;
 }
 
 button {

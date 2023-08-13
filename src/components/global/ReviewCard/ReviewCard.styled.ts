@@ -16,6 +16,7 @@ export const Text = styled.p`
   margin-top: 25px;
   line-height: ${(p) => p.theme.lineHeights.text};
   text-align: center;
+  cursor: default;
 `;
 
 export const Name = styled.p`
@@ -24,9 +25,11 @@ export const Name = styled.p`
   font-size: ${(p) => p.theme.fontSizes[3]};
   font-weight: ${(p) => p.theme.fontWeights.semiBold};
   color: ${(p) => p.theme.colors.mtc};
+  cursor: default;
 `;
 
 export const Role = styled.p`
   font-size: ${(p) => p.theme.fontSizes[0]};
   line-height: ${(p) => p.theme.lineHeights.text};
+  cursor: default;
 `;

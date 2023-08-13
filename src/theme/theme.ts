@@ -3,6 +3,7 @@ const colors = Object.freeze({
   mbgc: "var(--main-bg-color)",
   abgc: "var(--alt-bg-color)",
   hbgc: "var(--hero-bg-color)",
+  gbgc: "var(--gallery-bg-color)",
   mtc: "var(--main-title-color)",
   mtch: "var(--main-title-color-hover)",
   atc: "var(--alt-title-color)",
