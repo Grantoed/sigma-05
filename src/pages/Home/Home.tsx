@@ -8,6 +8,7 @@ import { Offers } from "src/components/modules/Offers";
 import { EcoFriendly } from "src/components/modules/EcoFriendly";
 import { Gallery } from "src/components/modules/Gallery";
 import { News } from "src/components/modules/News";
+import { Subscription } from "src/components/modules/Subscription";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <EcoFriendly />
       <Gallery />
       <News />
+      <Subscription />
     </>
   );
 };

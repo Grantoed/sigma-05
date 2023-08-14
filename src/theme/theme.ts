@@ -13,6 +13,7 @@ const colors = Object.freeze({
   buttonIcon: "var(--button-icon-color)",
   star: "var(--star-color)",
   discount: "var(--discount-color)",
+  placeholder: "var(--placeholder-color)",
   shadow: "var(--shadow-color)",
   backdrop: "var(--backdrop-color)",
 });
