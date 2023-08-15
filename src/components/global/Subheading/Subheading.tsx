@@ -1,6 +1,6 @@
 import React from "react";
 import { ColorProps } from "styled-system";
-import { ChildrenProp } from "src/types/childrenProp";
+import { ChildrenProp } from "src/interfaces/childrenProp.interface";
 import { Heading } from "./Subheading.styled";
 
 export const Subheading = ({

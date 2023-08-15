@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { fetchAll } from "src/api/productsAPI";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
 import { Button } from "src/components/global/Button";
@@ -7,6 +8,16 @@ import { Section } from "./Products.styled";
 import { ProductCard } from "src/components/global/ProductCard";
 
 export const Products = () => {
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetchAll({ limit: "8" });
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  // }, []);
+
   return (
     <Section>
       <Container py={150}>
