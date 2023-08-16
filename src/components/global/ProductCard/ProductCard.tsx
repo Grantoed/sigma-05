@@ -40,7 +40,7 @@ export const ProductCard = ({
       <ProductName>{name}</ProductName>
       <ProductDetails>
         <PriceWrapper>
-          <ProductOldPrice>${priceOld}</ProductOldPrice>
+          {priceOld && <ProductOldPrice>${priceOld}</ProductOldPrice>}
           <ProductPrice>${price}</ProductPrice>
         </PriceWrapper>
         <ProductRating>

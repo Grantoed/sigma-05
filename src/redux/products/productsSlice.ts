@@ -3,21 +3,26 @@ import { fetchAll } from "src/api/productsAPI";
 import { Product } from "src/interfaces/product.interface";
 import { StateInterface } from "src/interfaces/state.interface";
 
+const initialState: StateInterface = {
+  isLoading: false,
+  searchQuery: "",
+  productsObject: {
+    products: [],
+    page: null,
+    limit: null,
+    count: null,
+    totalPages: null,
+  },
+  productsInCart: [],
+  error: null,
+};
+
 const productsSlice = createSlice({
   name: "products",
-  initialState: {
-    isLoading: false,
-    searchQuery: "",
-    productsArray: [],
-    productsInCart: [],
-    error: null,
-  } as StateInterface,
+  initialState,
   reducers: {
     search(state, action: PayloadAction<string>) {
       state.searchQuery = action.payload;
-    },
-    setProducts(state, action: PayloadAction<Product[]>) {
-      state.productsArray.push(...action.payload);
     },
     addToCart(state, action: PayloadAction<Product>) {
       state.productsInCart.unshift(action.payload);
@@ -35,7 +40,11 @@ const productsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAll.fulfilled, (state, action) => {
-        state.productsArray.push(...action.payload.products);
+        state.productsObject.products.push(...action.payload.products);
+        state.productsObject.page = action.payload.page;
+        state.productsObject.limit = action.payload.limit;
+        state.productsObject.count = action.payload.count;
+        state.productsObject.totalPages = action.payload.totalPages;
         state.isLoading = false;
       })
       .addCase(fetchAll.rejected, (state, action) => {

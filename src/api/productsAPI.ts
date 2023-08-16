@@ -4,7 +4,7 @@ import { GetAllArgs } from "src/interfaces/getAll.interface";
 import { ProductsResponse } from "src/interfaces/productsResponse.interface";
 import { GetByCategory } from "src/interfaces/getByCategory.interface";
 
-const BASE_URL = "localhost:8080/api";
+const BASE_URL = "http://localhost:8080/api";
 
 const server = axios.create({
   baseURL: BASE_URL,

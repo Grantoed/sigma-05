@@ -9,7 +9,10 @@ import {
 } from "styled-system";
 import shouldForwardProp from "@styled-system/should-forward-prop";
 
-export type ButtonProps = ColorProps & BorderProps & SpaceProps;
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  ColorProps &
+  BorderProps &
+  SpaceProps;
 
 export const CustomizedButton = styled.button.withConfig({
   shouldForwardProp,
