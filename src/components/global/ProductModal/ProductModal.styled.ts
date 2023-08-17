@@ -1,20 +1,8 @@
 import styled from "styled-components";
-import { SectionHeading } from "src/components/global/SectionHeading";
-import { Subheading } from "src/components/global/Subheading";
-
-export const Section = styled.section``;
-
-export const ProductsSubheading = styled(Subheading)`
-  text-align: center;
-`;
-
-export const ProductsHeading = styled(SectionHeading)`
-  margin-top: 8px;
-  text-align: center;
-`;
 
 export const ModalWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -43,8 +31,8 @@ export const ModalImage = styled.img`
 
 export const ModalCategory = styled.div`
   position: absolute;
-  top: 50px;
-  left: 40px;
+  top: 40px;
+  left: 30px;
   max-width: 96px;
   padding: 6px 12px;
   font-size: ${(p) => p.theme.fontSizes[0]};
@@ -89,6 +77,13 @@ export const ModalPrice = styled.p`
   color: ${(p) => p.theme.colors.mtc};
 `;
 
+export const ModalRating = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+`;
+
 export const ModalText = styled.p`
   margin-top: 30px;
   line-height: ${(p) => p.theme.lineHeights.text};
@@ -107,6 +102,7 @@ export const ModalButtonsWrapper = styled.div`
 
 export const MoreInfoWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
@@ -117,6 +113,7 @@ export const MoreInfoButtonsWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  margin-top: 90px;
 `;
 
 export const MoreInfoButton = styled.button`

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Backdrop } from "./Modal.styled";
+import { Backdrop } from "./Portal.styled";
 import { ChildrenProp } from "src/interfaces/childrenProp.interface";
 
-type ModalProps = {
+type PortalProps = {
   onClose: () => void;
 };
 
-export const Modal = ({ onClose, children }: ChildrenProp & ModalProps) => {
+export const Portal = ({ onClose, children }: ChildrenProp & PortalProps) => {
   useEffect(() => {
     const handleEscPress = (e: KeyboardEvent) => {
       if (e.code === "Escape") {

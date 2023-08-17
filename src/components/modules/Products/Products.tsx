@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch } from "src/redux/store";
 import {
   selectIsLoading,
   selectProductsObject,
@@ -9,22 +10,27 @@ import { fetchAll } from "src/api/productsAPI";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
 import { Button } from "src/components/global/Button";
-import { ProductsHeading, ProductsSubheading } from "./Products.styled";
-import { Section } from "./Products.styled";
+import { Portal } from "src/components/global/Portal";
+import { ProductModal } from "src/components/global/ProductModal";
 import { ProductCard } from "src/components/global/ProductCard";
-import { AppDispatch } from "src/redux/store";
+import { Product } from "src/interfaces/product.interface";
+import {
+  Section,
+  ProductsHeading,
+  ProductsSubheading,
+} from "./Products.styled";
 
 export const Products = () => {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [productQuantity, setProductQuantity] = useState<string | number>(1);
   const [displayCount, setDisplayCount] = useState(8);
   const [nextPage, setNextPage] = useState(2);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const productsObject = useSelector(selectProductsObject);
   const isLoading = useSelector(selectIsLoading);
   const productCount = useSelector(selectProductCount);
   const shouldLoadMore = productCount > displayCount * nextPage - 1;
-  console.log("shouldLoadMore", shouldLoadMore);
-  console.log("productCount", productCount);
-  console.log("displayCount", displayCount);
-  console.log("nextPage", nextPage);
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
 
   const handleLoadMore = (
@@ -35,6 +41,34 @@ export const Products = () => {
     if (productsObject.products.length < displayCount + 8) {
       dispatch(fetchAll({ limit: "8", page: nextPage.toString() }));
       setNextPage(nextPage + 1);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const intValue = parseInt(e.target.value);
+    if (!isNaN(intValue)) {
+      setProductQuantity(intValue);
+    }
+    if (!e.target.value) {
+      setProductQuantity("");
+    }
+  };
+
+  const handleIncrement = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (
+      typeof productQuantity === "number" &&
+      selectedProduct &&
+      productQuantity + 1 < selectedProduct.inStock
+    ) {
+      setProductQuantity(productQuantity + 1);
+    } else {
+      setProductQuantity(1);
+    }
+  };
+
+  const handleDecrement = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (typeof productQuantity === "number" && productQuantity - 1 > 0) {
+      setProductQuantity(productQuantity - 1);
     }
   };
 
@@ -65,6 +99,10 @@ export const Products = () => {
               priceOld={productItem.priceOld}
               price={productItem.price}
               rating={productItem.rating}
+              openModal={() => {
+                setSelectedProduct(productItem);
+                setIsModalOpen(true);
+              }}
             />
           ))}
         </Box>
@@ -78,6 +116,17 @@ export const Products = () => {
           >
             Load More
           </Button>
+        )}
+        {isModalOpen && selectedProduct && (
+          <Portal onClose={() => setIsModalOpen(false)}>
+            <ProductModal
+              selectedProduct={selectedProduct}
+              productQuantity={productQuantity}
+              handleInputChange={handleInputChange}
+              handleIncrement={handleIncrement}
+              handleDecrement={handleDecrement}
+            />
+          </Portal>
         )}
       </Container>
     </Section>

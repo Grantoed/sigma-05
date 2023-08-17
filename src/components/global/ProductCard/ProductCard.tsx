@@ -1,5 +1,7 @@
 import React from "react";
 import { useTheme } from "styled-components";
+import { BiStar } from "react-icons/bi";
+import { Product } from "src/interfaces/product.interface";
 import {
   ProductWrapper,
   ProductCategory,
@@ -11,15 +13,15 @@ import {
   ProductPrice,
   ProductRating,
 } from "./ProductCard.styled";
-import { BiStar } from "react-icons/bi";
 
-type ProductProps = {
-  category: string;
-  imageURL: string;
-  name: string;
-  priceOld?: number;
-  price: number;
-  rating: number;
+type ProductCardProps = {
+  category: Product["category"];
+  imageURL: Product["imageURL"];
+  name: Product["name"];
+  priceOld?: Product["priceOld"];
+  price: Product["price"];
+  rating: Product["rating"];
+  openModal?: () => void;
 };
 
 export const ProductCard = ({
@@ -29,12 +31,13 @@ export const ProductCard = ({
   priceOld,
   price,
   rating,
-}: ProductProps) => {
+  openModal,
+}: ProductCardProps) => {
   const MAX_STARS = 5;
   const theme = useTheme();
 
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={openModal}>
       <ProductCategory>{category}</ProductCategory>
       <ProductImage src={imageURL} />
       <ProductName>{name}</ProductName>
