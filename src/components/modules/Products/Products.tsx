@@ -49,8 +49,11 @@ export const Products = () => {
     if (!isNaN(intValue)) {
       setProductQuantity(intValue);
     }
-    if (!e.target.value) {
+    if (!intValue) {
       setProductQuantity("");
+    }
+    if (selectedProduct && intValue > selectedProduct.inStock) {
+      setProductQuantity(selectedProduct.inStock);
     }
   };
 
@@ -58,11 +61,13 @@ export const Products = () => {
     if (
       typeof productQuantity === "number" &&
       selectedProduct &&
-      productQuantity + 1 < selectedProduct.inStock
+      productQuantity + 1 > selectedProduct.inStock
     ) {
-      setProductQuantity(productQuantity + 1);
-    } else {
+      return;
+    } else if (typeof productQuantity === "string") {
       setProductQuantity(1);
+    } else {
+      setProductQuantity(productQuantity + 1);
     }
   };
 
