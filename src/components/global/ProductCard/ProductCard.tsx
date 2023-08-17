@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "styled-components";
 import { BiStar } from "react-icons/bi";
+import { formatPrice } from "src/helpers/formatPrice";
 import { Product } from "src/interfaces/product.interface";
 import {
   ProductWrapper,
@@ -43,8 +44,10 @@ export const ProductCard = ({
       <ProductName>{name}</ProductName>
       <ProductDetails>
         <PriceWrapper>
-          {priceOld && <ProductOldPrice>${priceOld}</ProductOldPrice>}
-          <ProductPrice>${price}</ProductPrice>
+          {priceOld && (
+            <ProductOldPrice>${formatPrice(priceOld)}</ProductOldPrice>
+          )}
+          <ProductPrice>${formatPrice(price)}</ProductPrice>
         </PriceWrapper>
         <ProductRating>
           {Array.from({ length: MAX_STARS }).map((_, index) => (

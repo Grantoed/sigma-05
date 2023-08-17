@@ -24,7 +24,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const SearchBtn = styled.button`
+export const SearchButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;

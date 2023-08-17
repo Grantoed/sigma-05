@@ -6,12 +6,13 @@ export const Navigation = styled.nav``;
 export const NavigationList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 `;
 
 export const NavigationItem = styled.li``;
 
 export const NavigationLink = styled(NavLink)`
+  padding: 10px;
   font-family: ${(p) => p.theme.fonts.mtf};
   font-size: ${(p) => p.theme.fontSizes[2]};
   font-weight: ${(p) => p.theme.fontWeights.bold};

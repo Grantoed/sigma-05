@@ -11,6 +11,12 @@ export const ProductWrapper = styled.div`
   padding-right: 30px;
   background-color: ${(p) => p.theme.colors.abgc};
   border-radius: ${(p) => p.theme.radii.default};
+  transform: scale(1);
+  transition: transform var(--transition);
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const ProductCategory = styled.div`

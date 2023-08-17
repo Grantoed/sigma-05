@@ -20,8 +20,6 @@ export const SwiperCarousel = () => {
       style={{ marginTop: "60px" }}
       spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
       pagination={pagination}
       modules={[Pagination]}
       className="mySwiper"

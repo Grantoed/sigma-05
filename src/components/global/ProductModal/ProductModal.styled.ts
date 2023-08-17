@@ -12,10 +12,28 @@ export const ModalWrapper = styled.div`
 `;
 
 export const MainWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 90px;
+`;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 46px;
+  border-radius: 16px;
+  font-family: ${(p) => p.theme.fonts.mtf};
+  font-weight: ${(p) => p.theme.fontWeights.bold};
+  font-size: ${(p) => p.theme.fontSizes[2]};
+  color: ${(p) => p.theme.colors.mbgc};
+  background-color: ${(p) => p.theme.colors.mtc};
 `;
 
 export const ModalImageWrapper = styled.div`

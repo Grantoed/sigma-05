@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useTheme } from "styled-components";
 import { BiStar } from "react-icons/bi";
+import { formatPrice } from "src/helpers/formatPrice";
 import { Button } from "../Button";
 import { QuantityButton } from "../QuantityButton";
 import { Product } from "src/interfaces/product.interface";
 import {
   ModalWrapper,
   MainWrapper,
+  ModalCloseButton,
   ModalImageWrapper,
   ModalImage,
   ModalCategory,
@@ -26,22 +28,16 @@ import {
 
 type ProductModalProps = {
   selectedProduct: Product;
-  productQuantity: string | number;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleIncrement: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleDecrement: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose: () => void;
 };
 
 export const ProductModal = ({
   selectedProduct,
-  productQuantity,
-  handleInputChange,
-  handleIncrement,
-  handleDecrement,
+  onClose,
 }: ProductModalProps) => {
   const MAX_STARS = 5;
   const theme = useTheme();
-
+  const [productQuantity, setProductQuantity] = useState<string | number>(1);
   const [activeInfo, setActiveInfo] = useState<string | null>(null);
 
   const handleShowMoreInfo = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,9 +45,43 @@ export const ProductModal = ({
     setActiveInfo(infoType);
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const intValue = parseInt(e.target.value);
+    if (!isNaN(intValue)) {
+      setProductQuantity(intValue);
+    }
+    if (!intValue) {
+      setProductQuantity("");
+    }
+    if (selectedProduct && intValue > selectedProduct.inStock) {
+      setProductQuantity(selectedProduct.inStock);
+    }
+  };
+
+  const handleIncrement = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (
+      typeof productQuantity === "number" &&
+      selectedProduct &&
+      productQuantity + 1 > selectedProduct.inStock
+    ) {
+      return;
+    } else if (typeof productQuantity === "string") {
+      setProductQuantity(1);
+    } else {
+      setProductQuantity(productQuantity + 1);
+    }
+  };
+
+  const handleDecrement = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (typeof productQuantity === "number" && productQuantity - 1 > 0) {
+      setProductQuantity(productQuantity - 1);
+    }
+  };
+
   return (
     <ModalWrapper>
       <MainWrapper>
+        <ModalCloseButton onClick={onClose}>X</ModalCloseButton>
         <ModalImageWrapper>
           <ModalCategory>{selectedProduct.category}</ModalCategory>
           <ModalImage src={selectedProduct.imageURL}></ModalImage>
@@ -73,9 +103,11 @@ export const ProductModal = ({
           </ModalRating>
           <ModalPriceWrapper>
             {selectedProduct.priceOld && (
-              <ModalOldPrice>${selectedProduct.priceOld}</ModalOldPrice>
+              <ModalOldPrice>
+                ${formatPrice(selectedProduct.priceOld)}
+              </ModalOldPrice>
             )}
-            <ModalPrice>${selectedProduct.price}</ModalPrice>
+            <ModalPrice>${formatPrice(selectedProduct.price)}</ModalPrice>
           </ModalPriceWrapper>
           <ModalText>
             Considering adding some fresh {selectedProduct.name} to your cart?

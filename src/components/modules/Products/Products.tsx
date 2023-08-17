@@ -22,7 +22,6 @@ import {
 
 export const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [productQuantity, setProductQuantity] = useState<string | number>(1);
   const [displayCount, setDisplayCount] = useState(8);
   const [nextPage, setNextPage] = useState(2);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,39 +40,6 @@ export const Products = () => {
     if (productsObject.products.length < displayCount + 8) {
       dispatch(fetchAll({ limit: "8", page: nextPage.toString() }));
       setNextPage(nextPage + 1);
-    }
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const intValue = parseInt(e.target.value);
-    if (!isNaN(intValue)) {
-      setProductQuantity(intValue);
-    }
-    if (!intValue) {
-      setProductQuantity("");
-    }
-    if (selectedProduct && intValue > selectedProduct.inStock) {
-      setProductQuantity(selectedProduct.inStock);
-    }
-  };
-
-  const handleIncrement = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (
-      typeof productQuantity === "number" &&
-      selectedProduct &&
-      productQuantity + 1 > selectedProduct.inStock
-    ) {
-      return;
-    } else if (typeof productQuantity === "string") {
-      setProductQuantity(1);
-    } else {
-      setProductQuantity(productQuantity + 1);
-    }
-  };
-
-  const handleDecrement = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (typeof productQuantity === "number" && productQuantity - 1 > 0) {
-      setProductQuantity(productQuantity - 1);
     }
   };
 
@@ -125,11 +91,8 @@ export const Products = () => {
         {isModalOpen && selectedProduct && (
           <Portal onClose={() => setIsModalOpen(false)}>
             <ProductModal
+              onClose={() => setIsModalOpen(false)}
               selectedProduct={selectedProduct}
-              productQuantity={productQuantity}
-              handleInputChange={handleInputChange}
-              handleIncrement={handleIncrement}
-              handleDecrement={handleDecrement}
             />
           </Portal>
         )}
