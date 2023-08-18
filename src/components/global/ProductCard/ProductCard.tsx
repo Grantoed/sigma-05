@@ -22,7 +22,7 @@ type ProductCardProps = {
   priceOld?: Product["priceOld"];
   price: Product["price"];
   rating: Product["rating"];
-  openModal?: () => void;
+  openModal: () => void;
 };
 
 export const ProductCard = ({

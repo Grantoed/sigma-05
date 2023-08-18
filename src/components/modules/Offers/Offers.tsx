@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
+import { useProductModal } from "src/hooks/useProductModal";
 import { selectProductsObject } from "src/redux/products";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
@@ -7,13 +8,11 @@ import { Subheading } from "src/components/global/Subheading";
 import { Portal } from "src/components/global/Portal";
 import { ProductModal } from "src/components/global/ProductModal";
 import { ProductCard } from "src/components/global/ProductCard";
-import { Product } from "src/interfaces/product.interface";
 import { Section, OffersHeading } from "./Offers.styled";
 
 export const Offers = () => {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const { selectedProduct, isModalOpen, openModalWithProduct, closeModal } =
+    useProductModal();
   const productsObject = useSelector(selectProductsObject);
   const bestProducts = [...productsObject.products]
     .sort((a, b) => b.rating - a.rating)
@@ -40,17 +39,14 @@ export const Offers = () => {
               priceOld={productItem.priceOld}
               price={productItem.price}
               rating={productItem.rating}
-              openModal={() => {
-                setSelectedProduct(productItem);
-                setIsModalOpen(true);
-              }}
+              openModal={() => openModalWithProduct(productItem)}
             />
           ))}
         </Box>
         {isModalOpen && selectedProduct && (
-          <Portal onClose={() => setIsModalOpen(false)}>
+          <Portal onClose={closeModal}>
             <ProductModal
-              onClose={() => setIsModalOpen(false)}
+              onClose={closeModal}
               selectedProduct={selectedProduct}
             />
           </Portal>

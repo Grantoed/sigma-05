@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useProductModal } from "src/hooks/useProductModal";
 import { AppDispatch } from "src/redux/store";
 import {
   selectIsLoading,
@@ -13,7 +14,6 @@ import { Button } from "src/components/global/Button";
 import { Portal } from "src/components/global/Portal";
 import { ProductModal } from "src/components/global/ProductModal";
 import { ProductCard } from "src/components/global/ProductCard";
-import { Product } from "src/interfaces/product.interface";
 import {
   Section,
   ProductsHeading,
@@ -21,11 +21,11 @@ import {
 } from "./Products.styled";
 
 export const Products = () => {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [displayCount, setDisplayCount] = useState(8);
   const [nextPage, setNextPage] = useState(2);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { selectedProduct, isModalOpen, openModalWithProduct, closeModal } =
+    useProductModal();
   const productsObject = useSelector(selectProductsObject);
   const isLoading = useSelector(selectIsLoading);
   const productCount = useSelector(selectProductCount);
@@ -70,10 +70,7 @@ export const Products = () => {
               priceOld={productItem.priceOld}
               price={productItem.price}
               rating={productItem.rating}
-              openModal={() => {
-                setSelectedProduct(productItem);
-                setIsModalOpen(true);
-              }}
+              openModal={() => openModalWithProduct(productItem)}
             />
           ))}
         </Box>
@@ -89,9 +86,9 @@ export const Products = () => {
           </Button>
         )}
         {isModalOpen && selectedProduct && (
-          <Portal onClose={() => setIsModalOpen(false)}>
+          <Portal onClose={closeModal}>
             <ProductModal
-              onClose={() => setIsModalOpen(false)}
+              onClose={closeModal}
               selectedProduct={selectedProduct}
             />
           </Portal>
