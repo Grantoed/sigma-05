@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useTheme } from "styled-components";
+import { useProductQuantity } from "src/hooks/useProductQuantity";
 import { BiStar } from "react-icons/bi";
 import { formatPrice } from "src/helpers/formatPrice";
 import { Button } from "../Button";
 import { QuantityButton } from "../QuantityButton";
+import { addToCart } from "src/redux/orders";
 import { Product } from "src/interfaces/product.interface";
 import {
   ModalWrapper,
@@ -35,47 +38,37 @@ export const ProductModal = ({
   selectedProduct,
   onClose,
 }: ProductModalProps) => {
+  const {
+    productQuantity,
+    handleInputChange,
+    handleIncrement,
+    handleDecrement,
+  } = useProductQuantity(1, selectedProduct.inStock);
+  const [activeInfo, setActiveInfo] = useState<string | null>(null);
+
   const MAX_STARS = 5;
   const theme = useTheme();
-  const [productQuantity, setProductQuantity] = useState<string | number>(1);
-  const [activeInfo, setActiveInfo] = useState<string | null>(null);
+  const dispatch = useDispatch();
 
   const handleShowMoreInfo = (e: React.MouseEvent<HTMLButtonElement>) => {
     const infoType = e.currentTarget.id;
     setActiveInfo(infoType);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const intValue = parseInt(e.target.value);
-    if (!isNaN(intValue)) {
-      setProductQuantity(intValue);
-    }
-    if (!intValue) {
-      setProductQuantity("");
-    }
-    if (selectedProduct && intValue > selectedProduct.inStock) {
-      setProductQuantity(selectedProduct.inStock);
-    }
-  };
-
-  const handleIncrement = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (
-      typeof productQuantity === "number" &&
-      selectedProduct &&
-      productQuantity + 1 > selectedProduct.inStock
-    ) {
-      return;
-    } else if (typeof productQuantity === "string") {
-      setProductQuantity(1);
-    } else {
-      setProductQuantity(productQuantity + 1);
-    }
-  };
-
-  const handleDecrement = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (typeof productQuantity === "number" && productQuantity - 1 > 0) {
-      setProductQuantity(productQuantity - 1);
-    }
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(
+      addToCart({
+        _id: selectedProduct._id,
+        name: selectedProduct.name,
+        imageURL: selectedProduct.imageURL,
+        category: selectedProduct.category,
+        inStock: selectedProduct.inStock,
+        priceOld: selectedProduct.priceOld,
+        price: selectedProduct.price,
+        quantity: productQuantity as number,
+      })
+    );
+    onClose();
   };
 
   return (
@@ -121,7 +114,7 @@ export const ProductModal = ({
               onIncrement={handleIncrement}
               onDecrement={handleDecrement}
             />
-            <Button>Add To Cart</Button>
+            <Button onClick={handleAddToCart}>Add To Cart</Button>
           </ModalButtonsWrapper>
         </ProductDescriptionWrapper>
       </MainWrapper>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const QualityWrapper = styled.div`
+export const QuantityWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;

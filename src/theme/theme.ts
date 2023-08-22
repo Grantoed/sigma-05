@@ -3,6 +3,8 @@ const colors = Object.freeze({
   mbgc: "var(--main-bg-color)",
   abgc: "var(--alt-bg-color)",
   hbgc: "var(--hero-bg-color)",
+  bbgc: "var(--banner-bg-color)",
+  cbgc: "var(--cart-bg-color)",
   gbgc: "var(--gallery-bg-color)",
   mtc: "var(--main-title-color)",
   mtch: "var(--main-title-color-hover)",
@@ -15,6 +17,7 @@ const colors = Object.freeze({
   star: "var(--star-color)",
   discount: "var(--discount-color)",
   placeholder: "var(--placeholder-color)",
+  error: "var(--error-color)",
   shadow: "var(--shadow-color)",
   backdrop: "var(--backdrop-color)",
 });

@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectProductsInCart } from "src/redux/orders";
 import { BiCart } from "react-icons/bi";
 import { Container } from "src/components/global/Container";
 import { Logo } from "src/components/global/Logo";
@@ -14,6 +16,8 @@ import {
 } from "./Header.styled";
 
 export const Header = () => {
+  const productsInCart = useSelector(selectProductsInCart);
+
   return (
     <header>
       <Container
@@ -47,11 +51,11 @@ export const Header = () => {
           </NavigationList>
         </Navigation>
         <SearchBar />
-        <Cart>
+        <Cart to="/cart">
           <CartIcon>
             <BiCart size={25} color="#fff" />
           </CartIcon>
-          <CartText>Cart (0)</CartText>
+          <CartText>Cart ({productsInCart.length})</CartText>
         </Cart>
       </Container>
     </header>

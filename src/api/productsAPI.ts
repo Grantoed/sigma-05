@@ -1,20 +1,24 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { GetAllArgs } from "src/interfaces/getAll.interface";
+import { server } from "src/api/default";
 import { ProductsResponse } from "src/interfaces/productsResponse.interface";
-import { GetByCategory } from "src/interfaces/getByCategory.interface";
 
-const BASE_URL = "http://localhost:8080/api";
+type FetchAllArgs = {
+  page?: string;
+  limit?: string;
+  query?: string;
+};
 
-const server = axios.create({
-  baseURL: BASE_URL,
-});
+// type GetByCategoryArgs = {
+//   categoryName: string;
+//   page?: string;
+//   limit?: string;
+// };
 
 // Search all products. Use page & limit for pagination.
 // Use query to filter products by providing name or category
-export const fetchAll = createAsyncThunk<ProductsResponse, GetAllArgs>(
+export const fetchAll = createAsyncThunk<ProductsResponse, FetchAllArgs>(
   "products/fetchAll",
-  async ({ page, limit, query }: GetAllArgs, thunkAPI) => {
+  async ({ page, limit, query }: FetchAllArgs, thunkAPI) => {
     try {
       const params = new URLSearchParams();
 
@@ -46,24 +50,24 @@ export const fetchAll = createAsyncThunk<ProductsResponse, GetAllArgs>(
 // });
 
 // Search all products. Use page & limit for pagination.
-export const fetchByCategory = async ({
-  categoryName,
-  page,
-  limit,
-}: GetByCategory) => {
-  try {
-    const params = new URLSearchParams();
+// export const fetchByCategory = async ({
+//   categoryName,
+//   page,
+//   limit,
+// }: GetByCategoryArgs) => {
+//   try {
+//     const params = new URLSearchParams();
 
-    if (page) {
-      params.append("page", page.toString());
-    }
-    if (limit) {
-      params.append("limit", limit.toString());
-    }
+//     if (page) {
+//       params.append("page", page.toString());
+//     }
+//     if (limit) {
+//       params.append("limit", limit.toString());
+//     }
 
-    const res = await server.get(`/products/${categoryName}`, { params });
-    return res.data;
-  } catch (e: any) {
-    throw new Error(e.message);
-  }
-};
+//     const res = await server.get(`/products/${categoryName}`, { params });
+//     return res.data;
+//   } catch (e: any) {
+//     throw new Error(e.message);
+//   }
+// };

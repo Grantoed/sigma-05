@@ -14,6 +14,7 @@ import {
   ProductPrice,
   ProductRating,
 } from "./ProductCard.styled";
+import placeholderImg from "src/images/product-placeholder.png";
 
 type ProductCardProps = {
   category: Product["category"];
@@ -40,7 +41,7 @@ export const ProductCard = ({
   return (
     <ProductWrapper onClick={openModal}>
       <ProductCategory>{category}</ProductCategory>
-      <ProductImage src={imageURL} />
+      <ProductImage src={imageURL || placeholderImg} />
       <ProductName>{name}</ProductName>
       <ProductDetails>
         <PriceWrapper>

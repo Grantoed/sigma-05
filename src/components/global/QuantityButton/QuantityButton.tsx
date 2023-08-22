@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  QualityWrapper,
+  QuantityWrapper,
   QuantityInput,
   QuantityIncrement,
   QuantityDecrement,
@@ -20,7 +20,7 @@ export const QuantityButton = ({
   onDecrement,
 }: QuantityButtonProps) => {
   return (
-    <QualityWrapper>
+    <QuantityWrapper>
       <QuantityDecrement type="button" onClick={onDecrement}>
         -
       </QuantityDecrement>
@@ -33,6 +33,6 @@ export const QuantityButton = ({
       <QuantityIncrement type="button" onClick={onIncrement}>
         +
       </QuantityIncrement>
-    </QualityWrapper>
+    </QuantityWrapper>
   );
 };

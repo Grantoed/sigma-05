@@ -25,7 +25,7 @@ export const NavigationLink = styled(NavLink)`
   }
 `;
 
-export const Cart = styled.div`
+export const Cart = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;

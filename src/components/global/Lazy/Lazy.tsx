@@ -1,11 +1,8 @@
 import React from "react";
 import { Suspense } from "react";
 import { Loader } from "../Loader";
+import { ChildrenProp } from "src/interfaces/childrenProp.interface";
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const Lazy = (props: Props) => {
-  return <Suspense fallback={<Loader />}>{props.children}</Suspense>;
+export const Lazy = ({ children }: ChildrenProp) => {
+  return <Suspense fallback={<Loader />}>{children}</Suspense>;
 };
