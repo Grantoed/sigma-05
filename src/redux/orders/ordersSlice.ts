@@ -45,36 +45,12 @@ const ordersSlice = createSlice({
         ];
       productToChange.quantity = action.payload.quantity;
     },
-    // incrementProductQuantity(state, action: PayloadAction<string>) {
-    //   const productToChange =
-    //     state.productsInCart[
-    //       state.productsInCart.findIndex(
-    //         (product) => product._id === action.payload
-    //       )
-    //     ];
-    //   productToChange.quantity += 1;
-    // },
-
-    // decrementProductQuantity(
-    //   state,
-    //   action: PayloadAction<{ _id: string; quantity: number }>
-    // ) {
-    //   const productToChange =
-    //     state.productsInCart[
-    //       state.productsInCart.findIndex(
-    //         (product) => product._id === action.payload._id
-    //       )
-    //     ];
-    //   productToChange.quantity -= 1;
-    // },
+    clearCart(state) {
+      state.productsInCart = [];
+    },
   },
 });
 
-export const {
-  addToCart,
-  removeFromCart,
-  changeProductQuantity,
-  // incrementProductQuantity,
-  // decrementProductQuantity,
-} = ordersSlice.actions;
+export const { addToCart, removeFromCart, changeProductQuantity, clearCart } =
+  ordersSlice.actions;
 export const ordersReducer = ordersSlice.reducer;

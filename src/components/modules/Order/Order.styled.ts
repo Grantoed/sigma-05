@@ -7,6 +7,12 @@ export const Section = styled.section`
   background-color: ${(p) => p.theme.colors.cbgc};
 `;
 
+export const EmptyCartImg = styled.img`
+  margin-left: auto;
+  margin-right: auto;
+  mix-blend-mode: multiply;
+`;
+
 export const ProductWrapper = styled.div``;
 
 export const ProductList = styled.ul`
@@ -27,14 +33,15 @@ export const ProductDetailsWrapper = styled.div`
 `;
 
 export const ProductImage = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   mix-blend-mode: multiply;
 `;
 
 export const ProductNameWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 15px;
 `;
 
 export const ProductName = styled.p`

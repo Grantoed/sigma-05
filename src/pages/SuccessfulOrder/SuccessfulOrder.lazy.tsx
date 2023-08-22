@@ -1,14 +1,14 @@
 import React, { lazy } from "react";
 import { Lazy } from "src/components/global/Lazy";
 
-const LazyCart = lazy(() => import("./Cart"));
+const LazyCart = lazy(() => import("./SuccessfulOrder"));
 
 type Props = {};
 
-const Cart = (props: Props) => (
+const SuccessfulOrder = (props: Props) => (
   <Lazy>
     <LazyCart {...props} />
   </Lazy>
 );
 
-export default Cart;
+export default SuccessfulOrder;

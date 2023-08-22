@@ -14,6 +14,7 @@ const colors = Object.freeze({
   sbc: "var(--search-bar-color)",
   buttonIcon: "var(--button-icon-color)",
   abtnc: "var(--active-btn-color)",
+  dbtnc: "var(--disabled-btn-color)",
   star: "var(--star-color)",
   discount: "var(--discount-color)",
   placeholder: "var(--placeholder-color)",

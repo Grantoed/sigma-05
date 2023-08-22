@@ -1,29 +1,37 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { clearCart } from "src/redux/orders";
 import { submitOrder } from "src/api/orderAPI";
 import { orderSchema } from "src/validations/order.validation";
 import { Box } from "src/components/global/Box";
 import { Order } from "src/interfaces/Order.interface";
 import {
   Form,
-  Field,
+  FlexFieldWrapper,
+  FieldWrapper,
   Label,
   Input,
+  TextAreaWrapper,
+  TextArea,
   SubmitButton,
   ErrorMessage,
 } from "./OrderForm.styled";
 
 type Props = {
   productsInCart: Order["productsInCart"];
-  totalPrice: Order["totalPrice"];
-  totalDiscount: Order["totalDiscount"];
+  subtotal: Order["subtotal"];
+  discount: Order["discount"];
+  total: Order["total"];
 };
 
 export const OrderForm = ({
   productsInCart,
-  totalPrice,
-  totalDiscount,
+  subtotal,
+  discount,
+  total,
 }: Props) => {
   const {
     register,
@@ -32,25 +40,34 @@ export const OrderForm = ({
     reset,
     setError,
   } = useForm<Order["client"]>({
-    defaultValues: {
-      //   email: "",
-    },
     mode: "onTouched",
     resolver: yupResolver<Order["client"]>(orderSchema),
   });
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
+      dispatch(clearCart());
+      navigate("/successful-order", { replace: true });
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset, dispatch, navigate]);
 
   const onSubmit: SubmitHandler<Order["client"]> = async (data) => {
     const r = await submitOrder({
       productsInCart,
-      client: data,
-      totalPrice,
-      totalDiscount,
+      client: {
+        fullName: data.fullName,
+        email: data.email,
+        address: data.address,
+        phoneNumber: data.phoneNumber,
+        message: data.message,
+      },
+      subtotal,
+      discount,
+      total,
     });
     if (r.status === 400) {
       setError("root", {
@@ -62,67 +79,73 @@ export const OrderForm = ({
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-      <Field>
-        <Label htmlFor="fullName">Full name*</Label>
-        <Input
-          type="name"
-          id="fullName"
-          {...register("fullName")}
-          placeholder="John Doe"
-        />
-        {errors.fullName?.message && (
-          <ErrorMessage>{errors.fullName.message}</ErrorMessage>
-        )}
-      </Field>
-      <Field>
-        <Label htmlFor="email">Email*</Label>
-        <Input
-          type="email"
-          id="email"
-          {...register("email")}
-          placeholder="example@mail.com"
-        />
-        {errors.email?.message && (
-          <ErrorMessage>{errors.email.message}</ErrorMessage>
-        )}
-      </Field>
-
-      <Field>
-        <Label htmlFor="address">Address*</Label>
-        <Input
-          autoComplete="off"
-          type="text"
-          id="address"
-          {...register("address")}
-        />
-        {errors.address?.message && (
-          <ErrorMessage>{errors.address.message}</ErrorMessage>
-        )}
-      </Field>
-      <Field>
-        <Label htmlFor="phoneNumber">Phone number*</Label>
-        <Input
-          autoComplete="off"
-          type="text"
-          id="phoneNumber"
-          {...register("phoneNumber")}
-        />
-        {errors.phoneNumber?.message && (
-          <ErrorMessage>{errors.phoneNumber.message}</ErrorMessage>
-        )}
-      </Field>
-      <Field>
+      <FlexFieldWrapper>
+        <FieldWrapper>
+          <Label htmlFor="fullName">Full name*</Label>
+          <Input
+            type="name"
+            id="fullName"
+            {...register("fullName")}
+            placeholder="John Doe"
+          />
+          {errors.fullName?.message && (
+            <ErrorMessage>{errors.fullName.message}</ErrorMessage>
+          )}
+        </FieldWrapper>
+        <FieldWrapper>
+          <Label htmlFor="email">Email*</Label>
+          <Input
+            type="email"
+            id="email"
+            {...register("email")}
+            placeholder="example@sigma.software"
+          />
+          {errors.email?.message && (
+            <ErrorMessage>{errors.email.message}</ErrorMessage>
+          )}
+        </FieldWrapper>
+      </FlexFieldWrapper>
+      <FlexFieldWrapper>
+        <FieldWrapper>
+          <Label htmlFor="address">Address*</Label>
+          <Input
+            autoComplete="off"
+            type="text"
+            id="address"
+            {...register("address")}
+            placeholder="Kharkiv, Akademika Proskury Street, 1"
+          />
+          {errors.address?.message && (
+            <ErrorMessage>{errors.address.message}</ErrorMessage>
+          )}
+        </FieldWrapper>
+        <FieldWrapper>
+          <Label htmlFor="phoneNumber">Phone number*</Label>
+          <Input
+            autoComplete="off"
+            type="tel"
+            id="phoneNumber"
+            {...register("phoneNumber")}
+            inputMode="numeric"
+            placeholder="0501234567"
+          />
+          {errors.phoneNumber?.message && (
+            <ErrorMessage>{errors.phoneNumber.message}</ErrorMessage>
+          )}
+        </FieldWrapper>
+      </FlexFieldWrapper>
+      <TextAreaWrapper>
         <Label htmlFor="message">Message</Label>
-        <Input
+        <TextArea
           autoComplete="off"
-          type="text"
           id="message"
           {...register("message")}
+          placeholder="Is there anything else you want us to know?"
         />
         {errors.message?.message && (
           <ErrorMessage>{errors.message.message}</ErrorMessage>
         )}
-      </Field>
+      </TextAreaWrapper>
       <Box>
         <SubmitButton disabled={isSubmitting || !isValid}>Confirm</SubmitButton>
       </Box>
