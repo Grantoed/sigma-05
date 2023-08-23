@@ -4,9 +4,9 @@ import { BiRightArrowAlt, BiSolidUser } from "react-icons/bi";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
 import { Subheading } from "src/components/global/Subheading";
+import { SectionHeading } from "src/components/global/SectionHeading";
 import {
   Section,
-  NewsHeading as Heading,
   Link,
   LinkIcon,
   NewsItem,
@@ -32,9 +32,9 @@ export const News = () => {
         >
           <Box display="flex" flexDirection="column" width={702}>
             <Subheading>News</Subheading>
-            <Heading>
+            <SectionHeading>
               Discover weekly content about organic food, & more
-            </Heading>
+            </SectionHeading>
           </Box>
           <Link to="/news">
             More News

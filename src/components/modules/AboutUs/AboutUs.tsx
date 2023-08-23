@@ -59,7 +59,7 @@ export const AboutUs = () => {
               </Box>
             </Point>
           </Box>
-          <Button>Shop Now</Button>
+          <Button to="/shop">Shop Now</Button>
         </Box>
       </Container>
     </Section>

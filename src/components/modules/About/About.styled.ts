@@ -1,15 +1,36 @@
 import styled from "styled-components";
 import { NavButton } from "src/components/global/NavButton";
+import { Container } from "src/components/global/Container";
+import cherryTomatoesImg from "src/images/cherry-tomatoes.png";
 
 export const Section = styled.section`
   padding-top: 90px;
   padding-bottom: 90px;
-  background-color: ${(p) => p.theme.colors.abgc};
+`;
+
+export const AboutContainer = styled(Container)`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    width: 350px;
+    height: 350px;
+    background-image: url(${cherryTomatoesImg});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    mix-blend-mode: multiply;
+  }
 `;
 
 export const Image = styled.img`
-  width: 733px;
-  height: 697px;
+  width: 700px;
 `;
 
 export const Text = styled.p`
@@ -25,17 +46,7 @@ export const Point = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-`;
-
-export const PointIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  background-color: ${(p) => p.theme.colors.mbgc};
-  border-radius: ${(p) => p.theme.radii.points};
+  gap: 15px;
 `;
 
 export const PointIcon = styled.img`

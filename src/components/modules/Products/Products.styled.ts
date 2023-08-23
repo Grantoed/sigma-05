@@ -9,7 +9,6 @@ export const ProductsSubheading = styled(Subheading)`
 `;
 
 export const ProductsHeading = styled(SectionHeading)`
-  margin-top: 8px;
   text-align: center;
 `;
 

@@ -1,18 +1,19 @@
 import React from "react";
+import { BackgroundProps, ColorProps } from "styled-system";
 import { Container } from "src/components/global/Container";
 import { ChildrenProp } from "src/interfaces/childrenProp.interface";
 import { Section, Title } from "./PageBanner.styled";
 
-type PageBannerProps = {
-  backgroundImgUrl: string;
-};
-
 export const PageBanner = ({
   children,
-  backgroundImgUrl,
-}: ChildrenProp & PageBannerProps) => {
+  backgroundColor,
+  backgroundImage,
+}: ChildrenProp & BackgroundProps & ColorProps) => {
   return (
-    <Section backgroundImage={`url(${backgroundImgUrl})`}>
+    <Section
+      backgroundImage={`url(${backgroundImage})`}
+      backgroundColor={backgroundColor}
+    >
       <Container
         display="flex"
         alignItems="center"

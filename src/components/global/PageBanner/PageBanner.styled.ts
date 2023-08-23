@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import shouldForwardProp from "@styled-system/should-forward-prop";
-import { backgroundImage, BackgroundImageProps } from "styled-system";
+import { color, background, ColorProps, BackgroundProps } from "styled-system";
 
 export const Section = styled.div.withConfig({
   shouldForwardProp,
-})<BackgroundImageProps>`
+})<BackgroundProps & ColorProps>`
   height: 450px;
   background-color: ${(p) => p.theme.colors.bbgc};
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  ${backgroundImage};
+  ${color};
+  ${background};
 `;
 
 export const Title = styled.h2`

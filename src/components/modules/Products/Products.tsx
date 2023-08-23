@@ -29,7 +29,8 @@ export const Products = () => {
   const productsObject = useSelector(selectProductsObject);
   const isLoading = useSelector(selectIsLoading);
   const productCount = useSelector(selectProductCount);
-  const shouldLoadMore = productCount > displayCount * nextPage - 1;
+  const shouldLoadMore =
+    productCount > displayCount * nextPage - 1 || displayCount === 8;
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
 
   const handleLoadMore = (
@@ -48,6 +49,12 @@ export const Products = () => {
       dispatch(fetchAll({ limit: "8" }));
     }
   }, [dispatch, productsObject.products.length]);
+
+  const handleHideAll = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setDisplayCount(8);
+  };
 
   return (
     <Section>
@@ -74,17 +81,28 @@ export const Products = () => {
             />
           ))}
         </Box>
-        {!isLoading && shouldLoadMore && (
-          <Button
-            onClick={handleLoadMore}
-            backgroundColor="#1E1E1E"
-            mt={80}
-            ml="auto"
-            mr="auto"
-          >
-            Load More
-          </Button>
-        )}
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          mt={80}
+          gridGap={30}
+        >
+          {!isLoading && shouldLoadMore && (
+            <Button
+              onClick={handleLoadMore}
+              backgroundColor="#1E1E1E"
+              // mt={80}
+              // ml="auto"
+              // mr="auto"
+            >
+              Load More
+            </Button>
+          )}
+          {displayCount > 8 && (
+            <Button onClick={handleHideAll}>Hide All</Button>
+          )}
+        </Box>
         {isModalOpen && selectedProduct && (
           <Portal onClose={closeModal}>
             <ProductModal

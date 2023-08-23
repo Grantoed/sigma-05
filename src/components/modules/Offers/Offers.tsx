@@ -1,16 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useTheme } from "styled-components";
 import { useProductModal } from "src/hooks/useProductModal";
 import { selectProductsObject } from "src/redux/products";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
 import { Subheading } from "src/components/global/Subheading";
+import { SectionHeading } from "src/components/global/SectionHeading";
 import { Portal } from "src/components/global/Portal";
 import { ProductModal } from "src/components/global/ProductModal";
 import { ProductCard } from "src/components/global/ProductCard";
-import { Section, OffersHeading } from "./Offers.styled";
+import { Section } from "./Offers.styled";
 
 export const Offers = () => {
+  const theme = useTheme();
   const { selectedProduct, isModalOpen, openModalWithProduct, closeModal } =
     useProductModal();
   const productsObject = useSelector(selectProductsObject);
@@ -22,7 +25,9 @@ export const Offers = () => {
     <Section>
       <Container>
         <Subheading>Offer</Subheading>
-        <OffersHeading>We Offer Organic For You</OffersHeading>
+        <SectionHeading color={theme.colors.mbgc}>
+          We Offer Organic For You
+        </SectionHeading>
         <Box
           display="grid"
           gridTemplateColumns="repeat(4, 1fr)"

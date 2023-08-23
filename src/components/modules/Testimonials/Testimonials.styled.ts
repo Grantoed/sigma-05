@@ -19,7 +19,6 @@ export const TestimonialsSubheading = styled(Subheading)`
 `;
 
 export const TestimonialsHeading = styled(SectionHeading)`
-  margin-top: 8px;
   text-align: center;
 `;
 
@@ -47,7 +46,6 @@ export const StatsItem = styled.div`
     ${(p) => p.theme.colors.hbgc} 66%,
     ${(p) => p.theme.colors.mbgc} 66%
   );
-  /* background-color: ${(p) => p.theme.colors.hbgc}; */
   border: 5px solid ${(p) => p.theme.colors.atc};
   border-radius: ${(p) => p.theme.radii.round};
 `;

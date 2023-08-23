@@ -58,13 +58,7 @@ export const OrderForm = ({
   const onSubmit: SubmitHandler<Order["client"]> = async (data) => {
     const r = await submitOrder({
       productsInCart,
-      client: {
-        fullName: data.fullName,
-        email: data.email,
-        address: data.address,
-        phoneNumber: data.phoneNumber,
-        message: data.message,
-      },
+      client: data,
       subtotal,
       discount,
       total,

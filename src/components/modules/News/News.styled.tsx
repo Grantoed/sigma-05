@@ -1,14 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { SectionHeading } from "src/components/global/SectionHeading";
 import lettuceImg from "src/images/lettuce.jpg";
 import tomatoesImg from "src/images/tomatoes.jpg";
 
 export const Section = styled.section``;
-
-export const NewsHeading = styled(SectionHeading)`
-  margin-top: 8px;
-`;
 
 export const Link = styled(NavLink)`
   display: flex;

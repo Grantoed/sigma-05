@@ -6,7 +6,7 @@ import cartImg from "src/images/cart.jpg";
 const Cart = () => {
   return (
     <>
-      <PageBanner backgroundImgUrl={cartImg}>Cart</PageBanner>
+      <PageBanner backgroundImage={cartImg}>Cart</PageBanner>
       <Order />
     </>
   );
