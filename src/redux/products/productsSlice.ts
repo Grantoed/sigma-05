@@ -29,7 +29,15 @@ const productsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAll.fulfilled, (state, action) => {
-        state.productsObject.products.push(...action.payload.products);
+        const existingProductIds = new Set(
+          state.productsObject.products.map((product) => product._id)
+        );
+        action.payload.products.forEach((newProduct) => {
+          if (!existingProductIds.has(newProduct._id)) {
+            state.productsObject.products.push(newProduct);
+            existingProductIds.add(newProduct._id);
+          }
+        });
         state.productsObject.page = action.payload.page;
         state.productsObject.limit = action.payload.limit;
         state.productsObject.count = action.payload.count;

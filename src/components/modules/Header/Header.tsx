@@ -6,6 +6,7 @@ import { Container } from "src/components/global/Container";
 import { Logo } from "src/components/global/Logo";
 import { SearchBar } from "src/components/global/SearchBar";
 import {
+  Header as HeaderSection,
   Navigation,
   NavigationList,
   NavigationItem,
@@ -19,7 +20,7 @@ export const Header = () => {
   const productsInCart = useSelector(selectProductsInCart);
 
   return (
-    <header>
+    <HeaderSection>
       <Container
         display="flex"
         alignItems="center"
@@ -58,6 +59,6 @@ export const Header = () => {
           <CartText>Cart ({productsInCart.length})</CartText>
         </Cart>
       </Container>
-    </header>
+    </HeaderSection>
   );
 };

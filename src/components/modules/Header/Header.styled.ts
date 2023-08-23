@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export const Header = styled.header`
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: ${(p) => p.theme.colors.mbgc};
+  z-index: 5;
+`;
+
 export const Navigation = styled.nav``;
 
 export const NavigationList = styled.ul`
