@@ -18,7 +18,7 @@ root.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       {/* <React.StrictMode> */}
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/sigma-hw-05">
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
