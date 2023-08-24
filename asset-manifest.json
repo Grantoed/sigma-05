@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sigma-hw-05/static/css/main.a706f2f8.css",
-    "main.js": "/sigma-hw-05/static/js/main.318240bc.js",
+    "main.js": "/sigma-hw-05/static/js/main.fd86000f.js",
     "static/css/380.11bfe7d5.chunk.css": "/sigma-hw-05/static/css/380.11bfe7d5.chunk.css",
     "static/js/380.abf268f9.chunk.js": "/sigma-hw-05/static/js/380.abf268f9.chunk.js",
     "static/js/143.2903ab75.chunk.js": "/sigma-hw-05/static/js/143.2903ab75.chunk.js",
@@ -53,7 +53,7 @@
     "static/media/logo.svg": "/sigma-hw-05/static/media/logo.9f421b0ba7c48a917aabf86138a8479e.svg",
     "index.html": "/sigma-hw-05/index.html",
     "main.a706f2f8.css.map": "/sigma-hw-05/static/css/main.a706f2f8.css.map",
-    "main.318240bc.js.map": "/sigma-hw-05/static/js/main.318240bc.js.map",
+    "main.fd86000f.js.map": "/sigma-hw-05/static/js/main.fd86000f.js.map",
     "380.11bfe7d5.chunk.css.map": "/sigma-hw-05/static/css/380.11bfe7d5.chunk.css.map",
     "380.abf268f9.chunk.js.map": "/sigma-hw-05/static/js/380.abf268f9.chunk.js.map",
     "143.2903ab75.chunk.js.map": "/sigma-hw-05/static/js/143.2903ab75.chunk.js.map",
@@ -69,6 +69,6 @@
   },
   "entrypoints": [
     "static/css/main.a706f2f8.css",
-    "static/js/main.318240bc.js"
+    "static/js/main.fd86000f.js"
   ]
 }
