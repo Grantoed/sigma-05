@@ -14,6 +14,11 @@ import {
   Cart,
   CartIcon,
   CartText,
+  Dropdown,
+  DropdownButton,
+  DropdownList,
+  DropdownItem,
+  DropdownLink,
 } from "./Header.styled";
 
 export const Header = () => {
@@ -38,7 +43,22 @@ export const Header = () => {
               <NavigationLink to="/about">About</NavigationLink>
             </NavigationItem>
             <NavigationItem>
-              <NavigationLink to="/pages">Pages</NavigationLink>
+              <Dropdown>
+                <DropdownButton>Pages</DropdownButton>
+                <DropdownList>
+                  <DropdownItem>
+                    <DropdownLink to="/admin">Admin</DropdownLink>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <DropdownLink to="/404">404</DropdownLink>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <DropdownLink to="/successful-order">
+                      Successful Order
+                    </DropdownLink>
+                  </DropdownItem>
+                </DropdownList>
+              </Dropdown>
             </NavigationItem>
             <NavigationItem>
               <NavigationLink to="/shop">Shop</NavigationLink>

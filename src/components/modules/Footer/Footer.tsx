@@ -110,19 +110,19 @@ export const Footer = () => {
           <SectionName>Utility Pages</SectionName>
           <UtilityList>
             <UtilityItem>
-              <UtilityInfo>Style Guide</UtilityInfo>
+              <UtilityInfo href="#">Style Guide</UtilityInfo>
             </UtilityItem>
             <UtilityItem>
-              <UtilityInfo>404 Not Found</UtilityInfo>
+              <UtilityInfo href="#">404 Not Found</UtilityInfo>
             </UtilityItem>
             <UtilityItem>
-              <UtilityInfo>Password Protected</UtilityInfo>
+              <UtilityInfo href="#">Password Protected</UtilityInfo>
             </UtilityItem>
             <UtilityItem>
-              <UtilityInfo>Licences</UtilityInfo>
+              <UtilityInfo href="#">Licences</UtilityInfo>
             </UtilityItem>
             <UtilityItem>
-              <UtilityInfo>Changelog</UtilityInfo>
+              <UtilityInfo href="#">Changelog</UtilityInfo>
             </UtilityItem>
           </UtilityList>
         </UtilityWrapper>
