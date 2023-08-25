@@ -62,8 +62,4 @@ export const TableRow = styled.tr`
   }
 `;
 
-export const TableButton = styled(Button)`
-  margin-top: 60px;
-  margin-left: auto;
-  margin-right: auto;
-`;
+export const TableButton = styled(Button)``;

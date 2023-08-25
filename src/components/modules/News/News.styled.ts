@@ -100,7 +100,7 @@ export const NewsText = styled.p`
   line-height: ${(p) => p.theme.lineHeights.text};
 `;
 
-export const NewsLink = styled(NavLink)`
+export const NewsLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;

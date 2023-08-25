@@ -1,27 +1,15 @@
 import React from "react";
-import { useTheme } from "styled-components";
-import { BiRightArrowAlt, BiSolidUser } from "react-icons/bi";
+import { BiRightArrowAlt } from "react-icons/bi";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
 import { Subheading } from "src/components/global/Subheading";
 import { SectionHeading } from "src/components/global/SectionHeading";
-import {
-  Section,
-  Link,
-  LinkIcon,
-  NewsItem,
-  NewsDateWrapper,
-  NewsDate,
-  NewsTextWrapper,
-  NewsAuthorWrapper,
-  NewsAuthor,
-  NewsTitle,
-  NewsText,
-  NewsLink,
-} from "./News.styled";
+import { NewsPiece } from "src/components/global/NewsPiece";
+import { Section, Link, LinkIcon } from "./News.styled";
+import lettuceImg from "src/images/lettuce.jpg";
+import tomatoesImg from "src/images/tomatoes.jpg";
 
 export const News = () => {
-  const theme = useTheme();
   return (
     <Section>
       <Container py={150}>
@@ -49,50 +37,24 @@ export const News = () => {
           justifyContent="space-between"
           mt={50}
         >
-          <NewsItem>
-            <NewsDateWrapper>
-              <NewsDate>25 Nov</NewsDate>
-            </NewsDateWrapper>
-            <NewsTextWrapper>
-              <NewsAuthorWrapper>
-                <BiSolidUser size={20} color={theme.colors.ac} />
-                <NewsAuthor>By Rachi Card</NewsAuthor>
-              </NewsAuthorWrapper>
-              <NewsTitle>The Benefits of Vitamin D & How to Get It</NewsTitle>
-              <NewsText>
-                Simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum
-              </NewsText>
-              <NewsLink to="/">
-                Read More
-                <LinkIcon>
-                  <BiRightArrowAlt size={15} color="#fff" />
-                </LinkIcon>
-              </NewsLink>
-            </NewsTextWrapper>
-          </NewsItem>
-          <NewsItem>
-            <NewsDateWrapper>
-              <NewsDate>25 Nov</NewsDate>
-            </NewsDateWrapper>
-            <NewsTextWrapper>
-              <NewsAuthorWrapper>
-                <BiSolidUser size={20} color={theme.colors.ac} />
-                <NewsAuthor>By Rachi Card</NewsAuthor>
-              </NewsAuthorWrapper>
-              <NewsTitle>Our Favourite Summertime Tomato</NewsTitle>
-              <NewsText>
-                Simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum
-              </NewsText>
-              <NewsLink to="/">
-                Read More
-                <LinkIcon>
-                  <BiRightArrowAlt size={15} color="#fff" />
-                </LinkIcon>
-              </NewsLink>
-            </NewsTextWrapper>
-          </NewsItem>
+          <NewsPiece
+            date="25 Nov"
+            author="Rachi Card"
+            title="The Benefits of Vitamin D & How to Get It"
+            text="Simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum"
+            url="#"
+            imageURL={lettuceImg}
+          />
+          <NewsPiece
+            date="25 Nov"
+            author="Rachi Card"
+            title="Our Favourite Summertime Tomato"
+            text="Simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum"
+            url="#"
+            imageURL={tomatoesImg}
+          />
         </Box>
       </Container>
     </Section>

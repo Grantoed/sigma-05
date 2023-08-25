@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchAllOrders } from "src/api/orderAPI";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
+import { NavButton } from "src/components/global/NavButton";
 import { Order } from "src/interfaces/Order.interface";
 import {
   Heading,
@@ -35,7 +36,6 @@ const Admin = () => {
     const fetchOrders = async () => {
       const { orders, page, count, totalPages } = await fetchAllOrders({
         page: "1",
-        limit: "2",
       });
       setOrdersData({ orders, page, count, totalPages });
     };
@@ -50,7 +50,6 @@ const Admin = () => {
       const nextPage = ordersData.page + 1;
       const { orders, page, count } = await fetchAllOrders({
         page: nextPage.toString(),
-        limit: "2",
       });
       setOrdersData({
         orders: [...ordersData.orders, ...orders],
@@ -130,9 +129,18 @@ const Admin = () => {
                 ))}
               </TableBody>
             </StyledTable>
-            {ordersData.page < ordersData.totalPages && (
-              <TableButton onClick={handleLoadMore}>Load More</TableButton>
-            )}
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              mt={60}
+              gridGap={30}
+            >
+              {ordersData.page < ordersData.totalPages && (
+                <TableButton onClick={handleLoadMore}>Load More</TableButton>
+              )}
+              <NavButton to="/">To Homepage</NavButton>
+            </Box>
           </Box>
         )}
       </Container>
