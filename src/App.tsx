@@ -6,6 +6,7 @@ import { SuccessfulOrder } from "./pages/SuccessfulOrder";
 import { SharedLayout } from "./pages/SharedLayout";
 import { About } from "./pages/About";
 import { Shop } from "./pages/Shop";
+import { Admin } from "./pages/Admin";
 import { NotFound } from "./pages/NotFound";
 import { Notification } from "./components/global/Notification";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Notification />
     </>

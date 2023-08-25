@@ -18,6 +18,7 @@ const colors = Object.freeze({
   star: "var(--star-color)",
   discount: "var(--discount-color)",
   placeholder: "var(--placeholder-color)",
+  tableBorder: "var(--table-border-color)",
   error: "var(--error-color)",
   shadow: "var(--shadow-color)",
   backdrop: "var(--backdrop-color)",
