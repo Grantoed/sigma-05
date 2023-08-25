@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import {
   removeFromCart,
   changeProductQuantity,
@@ -74,6 +75,27 @@ export const Order = () => {
           })
         );
       }
+      if (intValue > product.inStock) {
+        dispatch(
+          changeProductQuantity({
+            _id: product._id,
+            quantity: product.inStock,
+          })
+        );
+        toast.warn(
+          `${product.inStock} is maximum number of ${product.name} in stock.`,
+          {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
+      }
     };
 
     const handleIncrement = () => {
@@ -84,6 +106,17 @@ export const Order = () => {
             quantity: product.quantity + 1,
           })
         );
+      } else {
+        toast.warn("Oops! We don't have more in stock.", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     };
 

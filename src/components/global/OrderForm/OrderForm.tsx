@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { clearCart } from "src/redux/orders";
 import { submitOrder } from "src/api/orderAPI";
@@ -33,12 +34,13 @@ export const OrderForm = ({
   discount,
   total,
 }: Props) => {
+  const [orderSubmittedSuccessfully, setOrderSubmittedSuccessfully] =
+    useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful, isSubmitting, isValid },
+    formState: { errors, isSubmitting, isValid },
     reset,
-    setError,
   } = useForm<Order["client"]>({
     mode: "onTouched",
     resolver: yupResolver<Order["client"]>(orderSchema),
@@ -48,26 +50,29 @@ export const OrderForm = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
+    if (orderSubmittedSuccessfully) {
       reset();
       dispatch(clearCart());
       navigate("/successful-order", { replace: true });
+      setOrderSubmittedSuccessfully(false); // Reset for any subsequent submissions.
     }
-  }, [isSubmitSuccessful, reset, dispatch, navigate]);
+  }, [orderSubmittedSuccessfully, reset, dispatch, navigate]);
 
   const onSubmit: SubmitHandler<Order["client"]> = async (data) => {
-    const r = await submitOrder({
-      productsInCart,
-      client: data,
-      subtotal,
-      discount,
-      total,
-    });
-    if (r.status === 400) {
-      setError("root", {
-        type: "manual",
-        message: "Couldn't submit order. Please try again later",
+    try {
+      await submitOrder({
+        productsInCart,
+        client: data,
+        subtotal,
+        discount,
+        total,
       });
+      setOrderSubmittedSuccessfully(true);
+    } catch (e: any) {
+      const errorMessage =
+        e.response?.data?.errors?.[0] ||
+        "Couldn't submit order. Please try again later";
+      toast.error(errorMessage);
     }
   };
 

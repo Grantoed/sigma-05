@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const useProductQuantity = (initialValue = 1, maxQuantity: number) => {
   const [productQuantity, setProductQuantity] = useState<string | number>(
@@ -15,6 +16,16 @@ export const useProductQuantity = (initialValue = 1, maxQuantity: number) => {
     }
     if (maxQuantity && intValue > maxQuantity) {
       setProductQuantity(maxQuantity);
+      toast.warn(`Sorry! ${maxQuantity} is maximum of what we have in stock.`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -24,7 +35,16 @@ export const useProductQuantity = (initialValue = 1, maxQuantity: number) => {
       maxQuantity &&
       productQuantity + 1 > maxQuantity
     ) {
-      return;
+      toast.warn(`Sorry! ${maxQuantity} is maximum of what we have in stock.`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else if (typeof productQuantity === "string") {
       setProductQuantity(1);
     } else {

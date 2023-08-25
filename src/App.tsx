@@ -7,6 +7,7 @@ import { SharedLayout } from "./pages/SharedLayout";
 import { About } from "./pages/About";
 import { Shop } from "./pages/Shop";
 import { NotFound } from "./pages/NotFound";
+import { Notification } from "./components/global/Notification";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <Notification />
     </>
   );
 }

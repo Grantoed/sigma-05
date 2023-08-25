@@ -18,6 +18,6 @@ export const submitOrder = async ({
     });
     return res.data;
   } catch (e: any) {
-    return { status: e.response.status, message: e.message };
+    throw e;
   }
 };
