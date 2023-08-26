@@ -72,7 +72,7 @@ export const WhyChooseUs = () => {
               </Point>
             </Box>
           </Box>
-          <Image src={vegiesImg} />
+          <Image src={vegiesImg} alt="Vegetables" />
         </Box>
         <CardList>
           <CardItem>

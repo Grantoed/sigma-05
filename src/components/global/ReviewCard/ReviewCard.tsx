@@ -26,7 +26,7 @@ export const ReviewCard = ({
       mr="auto"
       width={780}
     >
-      <Avatar src={avatarURL} />
+      <Avatar src={avatarURL} alt={name} />
       <Rating src={starsImg} />
       <Text>{text}</Text>
       <Name>{name}</Name>

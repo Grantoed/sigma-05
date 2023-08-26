@@ -22,7 +22,7 @@ export const AboutUs = () => {
   return (
     <Section>
       <Container display="flex" alignItems="center">
-        <Image src={aboutImg} />
+        <Image src={aboutImg} alt="Fruits" />
         <Box width={702}>
           <Subheading>About Us</Subheading>
           <SectionHeading>
@@ -36,7 +36,7 @@ export const AboutUs = () => {
           <Box display="flex" flexDirection="column" mt={46} gridGap={35}>
             <Point>
               <PointIconWrapper>
-                <PointIcon src={organicFoodImg}></PointIcon>
+                <PointIcon src={organicFoodImg} alt="Bowl"></PointIcon>
               </PointIconWrapper>
               <Box display="flex" flexDirection="column" gridGap="7px">
                 <PointTitle>Organic Foods Only</PointTitle>
@@ -48,7 +48,7 @@ export const AboutUs = () => {
             </Point>
             <Point>
               <PointIconWrapper>
-                <PointIcon src={qualityStandardsImg}></PointIcon>
+                <PointIcon src={qualityStandardsImg} alt="Mailbox"></PointIcon>
               </PointIconWrapper>
               <Box display="flex" flexDirection="column" gridGap="7px">
                 <PointTitle>Quality Standards</PointTitle>

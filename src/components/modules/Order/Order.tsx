@@ -138,7 +138,7 @@ export const Order = () => {
     <Section>
       <Container>
         {cartIsEmpty ? (
-          <EmptyCartImg src={emptyCartImg} />
+          <EmptyCartImg src={emptyCartImg} alt="Empty cart" />
         ) : (
           <>
             <ProductWrapper>
@@ -152,7 +152,10 @@ export const Order = () => {
                   return (
                     <ProductItem key={product._id}>
                       <ProductDetailsWrapper>
-                        <ProductImage src={product.imageURL} />
+                        <ProductImage
+                          src={product.imageURL}
+                          alt={product.name}
+                        />
                         <ProductNameWrapper>
                           <ProductName>{product.name}</ProductName>
                           <ProductPriceWrapper>

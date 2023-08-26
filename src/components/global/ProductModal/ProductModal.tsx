@@ -77,7 +77,10 @@ export const ProductModal = ({
         <ModalCloseButton onClick={onClose}>X</ModalCloseButton>
         <ModalImageWrapper>
           <ModalCategory>{selectedProduct.category}</ModalCategory>
-          <ModalImage src={selectedProduct.imageURL}></ModalImage>
+          <ModalImage
+            src={selectedProduct.imageURL}
+            alt={selectedProduct.name}
+          ></ModalImage>
         </ModalImageWrapper>
         <ProductDescriptionWrapper>
           <ModalName>{selectedProduct.name}</ModalName>

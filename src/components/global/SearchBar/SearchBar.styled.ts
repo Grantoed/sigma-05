@@ -6,6 +6,18 @@ export const SearchWrapper = styled.div`
   align-items: center;
 `;
 
+export const SearchLabel = styled.label`
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+`;
+
 export const SearchInput = styled.input`
   width: 380px;
   height: 56px;

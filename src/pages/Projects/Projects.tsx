@@ -34,7 +34,7 @@ const Projects = () => {
             <ProjectItem>
               <ProjectLink href="#">
                 <ProjectImageWrapper>
-                  <ProjectImage src={lemonImg} />
+                  <ProjectImage src={lemonImg} alt="Lemons" />
                   <ProjectPopUp></ProjectPopUp>
                 </ProjectImageWrapper>
                 <ProjectTextWrapper>
@@ -46,7 +46,7 @@ const Projects = () => {
             <ProjectItem>
               <ProjectLink href="#">
                 <ProjectImageWrapper>
-                  <ProjectImage src={carrotImg} />
+                  <ProjectImage src={carrotImg} alt="Carrots" />
                   <ProjectPopUp></ProjectPopUp>
                 </ProjectImageWrapper>
                 <ProjectTextWrapper>
@@ -58,7 +58,7 @@ const Projects = () => {
             <ProjectItem>
               <ProjectLink href="#">
                 <ProjectImageWrapper>
-                  <ProjectImage src={leafImg} />
+                  <ProjectImage src={leafImg} alt="Leaves" />
                   <ProjectPopUp></ProjectPopUp>
                 </ProjectImageWrapper>
                 <ProjectTextWrapper>
@@ -70,7 +70,7 @@ const Projects = () => {
             <ProjectItem>
               <ProjectLink href="#">
                 <ProjectImageWrapper>
-                  <ProjectImage src={tomatoImg} />
+                  <ProjectImage src={tomatoImg} alt="Tomatoes" />
                   <ProjectPopUp></ProjectPopUp>
                 </ProjectImageWrapper>
                 <ProjectTextWrapper>
@@ -82,7 +82,7 @@ const Projects = () => {
             <ProjectItem>
               <ProjectLink href="#">
                 <ProjectImageWrapper>
-                  <ProjectImage src={raspberryImg} />
+                  <ProjectImage src={raspberryImg} alt="Raspberries" />
                   <ProjectPopUp></ProjectPopUp>
                 </ProjectImageWrapper>
                 <ProjectTextWrapper>
@@ -94,7 +94,7 @@ const Projects = () => {
             <ProjectItem>
               <ProjectLink href="#">
                 <ProjectImageWrapper>
-                  <ProjectImage src={orangeImg} />
+                  <ProjectImage src={orangeImg} alt="Oranges" />
                   <ProjectPopUp></ProjectPopUp>
                 </ProjectImageWrapper>
                 <ProjectTextWrapper>

@@ -40,7 +40,7 @@ export const Experts = () => {
         </Text>
         <CardList>
           <CardItem>
-            <CardImage src={giovanniImg} />
+            <CardImage src={giovanniImg} alt="Giovani Bacardo" />
             <CardTextWrapper>
               <CardNameWrapper>
                 <CardName>Giovani Bacardo</CardName>
@@ -72,7 +72,7 @@ export const Experts = () => {
             </CardTextWrapper>
           </CardItem>
           <CardItem>
-            <CardImage src={marianneImg} />
+            <CardImage src={marianneImg} alt="Marianne Loreno" />
             <CardTextWrapper>
               <CardNameWrapper>
                 <CardName>Marianne Loreno</CardName>
@@ -104,7 +104,7 @@ export const Experts = () => {
             </CardTextWrapper>
           </CardItem>
           <CardItem>
-            <CardImage src={rigaImg} />
+            <CardImage src={rigaImg} alt="Riga Pelore" />
             <CardTextWrapper>
               <CardNameWrapper>
                 <CardName>Riga Pelore</CardName>

@@ -41,7 +41,7 @@ export const ProductCard = ({
   return (
     <ProductWrapper onClick={openModal}>
       <ProductCategory>{category}</ProductCategory>
-      <ProductImage src={imageURL || placeholderImg} />
+      <ProductImage src={imageURL || placeholderImg} alt={name} />
       <ProductName>{name}</ProductName>
       <ProductDetails>
         <PriceWrapper>

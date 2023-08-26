@@ -89,13 +89,7 @@ export const Products = () => {
           gridGap={30}
         >
           {!isLoading && shouldLoadMore && (
-            <Button
-              onClick={handleLoadMore}
-              backgroundColor="#1E1E1E"
-              // mt={80}
-              // ml="auto"
-              // mr="auto"
-            >
+            <Button onClick={handleLoadMore} backgroundColor="#1E1E1E">
               Load More
             </Button>
           )}

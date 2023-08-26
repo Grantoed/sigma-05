@@ -22,19 +22,19 @@ export const Categories = () => {
         <Heading>Fresh Products For You</Heading>
         <CardList>
           <CardItem>
-            <CardImage src={nutsImg} />
+            <CardImage src={nutsImg} alt="Hazelnuts" />
             <CardCategoryName>Nuts</CardCategoryName>
           </CardItem>
           <CardItem>
-            <CardImage src={fruitsImg} />
+            <CardImage src={fruitsImg} alt="Banana" />
             <CardCategoryName>Fruits</CardCategoryName>
           </CardItem>
           <CardItem>
-            <CardImage src={vegetablesImg} />
+            <CardImage src={vegetablesImg} alt="Lettuce" />
             <CardCategoryName>Vegetables</CardCategoryName>
           </CardItem>
           <CardItem>
-            <CardImage src={beansImg} />
+            <CardImage src={beansImg} alt="Beans" />
             <CardCategoryName>Beans</CardCategoryName>
           </CardItem>
         </CardList>
