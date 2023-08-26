@@ -16,7 +16,12 @@ export const Subscription = () => {
         <SubscriptionWrapper>
           <Heading>Subscribe to our Newsletter</Heading>
           <FormWrapper>
-            <Input placeholder="Your Email Address" />
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your Email Address"
+            />
             <SubmitButton type="button">Subscribe</SubmitButton>
           </FormWrapper>
         </SubscriptionWrapper>
