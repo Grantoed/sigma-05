@@ -20,6 +20,7 @@ export const Subscription = () => {
               type="email"
               name="email"
               id="email"
+              autoComplete="off"
               placeholder="Your Email Address"
             />
             <SubmitButton type="button">Subscribe</SubmitButton>
