@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HeroImg from "src/images/hero-banner.jpg";
+import HeroImg from "src/images/hero-banner.webp";
 
 export const Section = styled.section`
   height: 898px;

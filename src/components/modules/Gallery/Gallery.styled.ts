@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import organicFoodImg from "src/images/organic-food.jpg";
-import organicJuiceImg from "src/images/organic-juice.jpg";
-import nutsCookiesImg from "src/images/nuts-cookies.jpg";
+import organicFoodImg from "src/images/organic-food.webp";
+import organicJuiceImg from "src/images/organic-juice.webp";
+import nutsCookiesImg from "src/images/nuts-cookies.webp";
 
 export const GallerySection = styled.section`
   padding-top: 150px;

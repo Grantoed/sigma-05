@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./index.css";
 import { ReviewCard } from "../ReviewCard";
-import peachImg from "src/images/peach-avatar.jpg";
-import appleImg from "src/images/apple-avatar.jpg";
-import tomatoImg from "src/images/tomato-avatar.jpg";
+import peachImg from "src/images/peach-avatar.webp";
+import appleImg from "src/images/apple-avatar.webp";
+import tomatoImg from "src/images/tomato-avatar.webp";
 
 SwiperCore.use([Pagination]);
 

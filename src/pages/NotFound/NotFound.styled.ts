@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import notFoundBgImg from "src/images/404-bg.jpg";
+import notFoundBgImg from "src/images/404-bg.webp";
 
 export const Section = styled.section`
   height: 898px;

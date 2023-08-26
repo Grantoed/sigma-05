@@ -6,8 +6,8 @@ import { Subheading } from "src/components/global/Subheading";
 import { SectionHeading } from "src/components/global/SectionHeading";
 import { NewsPiece } from "src/components/global/NewsPiece";
 import { Section, Link, LinkIcon } from "./News.styled";
-import lettuceImg from "src/images/lettuce.jpg";
-import tomatoesImg from "src/images/tomatoes.jpg";
+import lettuceImg from "src/images/lettuce.webp";
+import tomatoesImg from "src/images/tomatoes.webp";
 
 export const News = () => {
   return (

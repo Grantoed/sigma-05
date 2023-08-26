@@ -14,7 +14,7 @@ import {
   ProductPrice,
   ProductRating,
 } from "./ProductCard.styled";
-import placeholderImg from "src/images/product-placeholder.png";
+import placeholderImg from "src/images/product-placeholder.webp";
 
 type ProductCardProps = {
   category: Product["category"];

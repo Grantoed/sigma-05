@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import lettuceImg from "src/images/lettuce.jpg";
-import tomatoesImg from "src/images/tomatoes.jpg";
+import lettuceImg from "src/images/lettuce.webp";
+import tomatoesImg from "src/images/tomatoes.webp";
 
 export const Section = styled.section``;
 

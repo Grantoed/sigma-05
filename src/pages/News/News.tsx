@@ -4,13 +4,13 @@ import { PageBanner } from "src/components/global/PageBanner";
 import { NewsPiece } from "src/components/global/NewsPiece";
 import { Subscription } from "src/components/modules/Subscription";
 import { Section } from "./News.styled";
-import newsBgImg from "src/images/news-banner.jpg";
-import lettuceImg from "src/images/lettuce.jpg";
-import tomatoesImg from "src/images/tomatoes.jpg";
-import vegetablesImg from "src/images/vegetables.jpg";
-import dudeImg from "src/images/dude.jpg";
-import womanImg from "src/images/woman.jpg";
-import plasticImg from "src/images/plastic.jpg";
+import newsBgImg from "src/images/news-banner.webp";
+import lettuceImg from "src/images/lettuce.webp";
+import tomatoesImg from "src/images/tomatoes.webp";
+import vegetablesImg from "src/images/vegetables.webp";
+import dudeImg from "src/images/dude.webp";
+import womanImg from "src/images/woman.webp";
+import plasticImg from "src/images/plastic.webp";
 
 const News = () => {
   return (

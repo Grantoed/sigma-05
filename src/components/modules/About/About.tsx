@@ -12,7 +12,7 @@ import {
   PointIcon,
   PointTitle,
 } from "./About.styled";
-import bowlImg from "src/images/bowl.png";
+import bowlImg from "src/images/bowl.webp";
 import tractorImg from "src/images/tractor.svg";
 import chemicalPlantImg from "src/images/chemical-plant.svg";
 

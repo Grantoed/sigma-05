@@ -14,7 +14,7 @@ import {
   PointTitle,
   PointText,
 } from "./AboutUs.styled";
-import aboutImg from "src/images/about.png";
+import aboutImg from "src/images/about.webp";
 import organicFoodImg from "src/images/organic-food.svg";
 import qualityStandardsImg from "src/images/quality-standards.svg";
 

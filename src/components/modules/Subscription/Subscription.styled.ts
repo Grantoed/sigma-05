@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { SectionHeading } from "src/components/global/SectionHeading";
-import newsletterImg from "src/images/newsletter-bg.jpg";
+import newsletterImg from "src/images/newsletter-bg.webp";
 
 export const Section = styled.section``;
 

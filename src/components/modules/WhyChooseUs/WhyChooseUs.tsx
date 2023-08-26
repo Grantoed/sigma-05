@@ -24,7 +24,7 @@ import {
   CardTitle,
   CardText,
 } from "./WhyChooseUs.styled";
-import vegiesImg from "src/images/cut-vegies.jpg";
+import vegiesImg from "src/images/cut-vegies.webp";
 
 export const WhyChooseUs = () => {
   const theme = useTheme();

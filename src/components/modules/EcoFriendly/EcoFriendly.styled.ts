@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Container } from "src/components/global/Container";
 import { SectionHeading } from "src/components/global/SectionHeading";
-import ecoFriendlyImg from "src/images/eco-friendly.jpg";
+import ecoFriendlyImg from "src/images/eco-friendly.webp";
 
 export const Section = styled.section``;
 

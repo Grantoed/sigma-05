@@ -12,7 +12,7 @@ import { ProductCard } from "src/components/global/ProductCard";
 import { ProductModal } from "src/components/global/ProductModal";
 import { Subscription } from "src/components/modules/Subscription";
 import { Section } from "./Shop.styled";
-import shopImg from "src/images/cart.jpg";
+import shopImg from "src/images/cart.webp";
 
 const Shop = () => {
   const MAX_ITEMS = 16;

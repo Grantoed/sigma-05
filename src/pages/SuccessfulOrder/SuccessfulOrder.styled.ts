@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import successfulOrderImg from "src/images/successful-order.jpg";
+import successfulOrderImg from "src/images/successful-order.webp";
 
 export const Section = styled.section`
   padding-top: 90px;

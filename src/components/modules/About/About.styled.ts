@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavButton } from "src/components/global/NavButton";
 import { Container } from "src/components/global/Container";
-import cherryTomatoesImg from "src/images/cherry-tomatoes.png";
+import cherryTomatoesImg from "src/images/cherry-tomatoes.webp";
 
 export const Section = styled.section`
   padding-top: 90px;

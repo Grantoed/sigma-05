@@ -21,9 +21,9 @@ import {
   CardSocialsWrapper,
   CardLink,
 } from "./Experts.styled";
-import giovanniImg from "src/images/Giovani-Bacardo.jpg";
-import marianneImg from "src/images/Marianne-Loreno.jpg";
-import rigaImg from "src/images/Riga-Pelore.jpg";
+import giovanniImg from "src/images/Giovani-Bacardo.webp";
+import marianneImg from "src/images/Marianne-Loreno.webp";
+import rigaImg from "src/images/Riga-Pelore.webp";
 
 export const Experts = () => {
   const theme = useTheme();

@@ -14,13 +14,13 @@ import {
   ProjectName,
   ProjectCategory,
 } from "./Projects.styled";
-import projectsBgImg from "src/images/projects-banner.jpg";
-import lemonImg from "src/images/tasty-lemon.jpg";
-import carrotImg from "src/images/organic-carrot.jpg";
-import leafImg from "src/images/betel-leaf.jpg";
-import tomatoImg from "src/images/natural-tomato.jpg";
-import raspberryImg from "src/images/black-raspberry.jpg";
-import orangeImg from "src/images/honey-orange.jpg";
+import projectsBgImg from "src/images/projects-banner.webp";
+import lemonImg from "src/images/tasty-lemon.webp";
+import carrotImg from "src/images/organic-carrot.webp";
+import leafImg from "src/images/betel-leaf.webp";
+import tomatoImg from "src/images/natural-tomato.webp";
+import raspberryImg from "src/images/black-raspberry.webp";
+import orangeImg from "src/images/honey-orange.webp";
 
 const Projects = () => {
   return (

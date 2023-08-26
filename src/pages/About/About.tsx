@@ -5,7 +5,7 @@ import { WhyChooseUs } from "src/components/modules/WhyChooseUs";
 import { Experts } from "src/components/modules/Experts";
 import { Categories } from "src/components/modules/Categories";
 import { Subscription } from "src/components/modules/Subscription";
-import aboutBgImg from "src/images/about-banner.jpg";
+import aboutBgImg from "src/images/about-banner.webp";
 
 const About = () => {
   return (

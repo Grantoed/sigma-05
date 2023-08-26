@@ -33,7 +33,7 @@ import {
   TotalCost,
   Discount,
 } from "./Order.styled";
-import emptyCartImg from "src/images/empty-cart.png";
+import emptyCartImg from "src/images/empty-cart.webp";
 
 export const Order = () => {
   const [showSubmitForm, setShowSubmitForm] = useState(false);

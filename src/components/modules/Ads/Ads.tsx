@@ -3,8 +3,8 @@ import { useTheme } from "styled-components";
 import { Container } from "src/components/global/Container";
 import { Subheading } from "src/components/global/Subheading";
 import { Section, AdsCard, AdsTitle } from "./Ads.styled";
-import naturalImg from "src/images/natural.jpg";
-import offerImg from "src/images/offer.jpg";
+import naturalImg from "src/images/natural.webp";
+import offerImg from "src/images/offer.webp";
 
 export const Ads = () => {
   const theme = useTheme();
