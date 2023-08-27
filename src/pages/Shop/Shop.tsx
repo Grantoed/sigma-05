@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useProductModal } from "src/hooks/useProductModal";
 import { AppDispatch } from "src/redux/store";
 import { selectProductsObject } from "src/redux/products";
-import { fetchAll } from "src/api/productsAPI";
+import { fetchAll } from "src/redux/operations";
 import { Portal } from "src/components/global/Portal";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";

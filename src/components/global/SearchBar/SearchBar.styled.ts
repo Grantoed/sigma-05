@@ -36,6 +36,10 @@ export const SearchInput = styled.input`
   &:focus {
     background-color: ${(p) => p.theme.colors.backdrop};
   }
+  &::placeholder {
+    font-style: italic;
+    color: ${(p) => p.theme.colors.placeholder};
+  }
 `;
 
 export const SearchButton = styled.button`

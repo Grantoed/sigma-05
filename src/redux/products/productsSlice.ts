@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAll } from "src/api/productsAPI";
-import { searchProducts } from "src/api/productsAPI";
+import { fetchAll, searchProducts } from "src/redux/operations";
 import { ProductsSlice } from "src/interfaces/productsSlice.interface";
 
 const initialState: ProductsSlice = {
   isLoading: false,
+  searchQuery: "",
   productsObject: {
     products: [],
     page: null,
@@ -22,6 +22,13 @@ const productsSlice = createSlice({
   reducers: {
     resetState: (state) => {
       Object.assign(state, initialState);
+    },
+    inputSearch: (state, action) => {
+      state.searchQuery = action.payload;
+    },
+    resetSearch: (state) => {
+      state.searchQuery = initialState.searchQuery;
+      state.filteredProducts = initialState.filteredProducts;
     },
   },
   extraReducers: (builder) => {
@@ -54,6 +61,7 @@ const productsSlice = createSlice({
       })
       .addCase(searchProducts.fulfilled, (state, action) => {
         state.filteredProducts = [...action.payload.products];
+        state.isLoading = false;
       })
       .addCase(searchProducts.rejected, (state, action) => {
         state.isLoading = false;
@@ -62,5 +70,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { resetState } = productsSlice.actions;
+export const { resetState, inputSearch, resetSearch } = productsSlice.actions;
 export const productsReducer = productsSlice.reducer;

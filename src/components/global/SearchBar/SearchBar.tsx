@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAllProducts } from "src/api/productsAPI";
+import { searchProducts } from "src/redux/operations";
 import { useProductModal } from "src/hooks/useProductModal";
+import {
+  selectSearchQuery,
+  inputSearch,
+  resetSearch,
+} from "src/redux/products";
 import { AppDispatch } from "src/redux/store";
 import { ProductModal } from "src/components/global/ProductModal";
 import { BiSearch } from "react-icons/bi";
 import { Portal } from "src/components/global/Portal";
-import { fetchAllProducts, searchProducts } from "src/api/productsAPI";
 import { ProductsResponse } from "src/interfaces/productsResponse.interface";
 import {
   SearchWrapper,
@@ -28,6 +34,7 @@ export const SearchBar = () => {
   const location = useLocation();
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
   const resultsWrapper = useRef<HTMLDivElement | null>(null);
+  const searchQuery = useSelector(selectSearchQuery);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,20 +70,21 @@ export const SearchBar = () => {
   };
 
   const handleInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchQuery = e.target.value;
+    dispatch(inputSearch(e.target.value));
 
     if (resultsWrapper.current) {
       resultsWrapper.current.style.display = "block";
     }
 
     const { products } = await fetchAllProducts({
-      q: searchQuery,
+      q: e.target.value,
       limit: "5",
     });
     setSearchResults(products);
 
-    if (!e.target.value.length) {
+    if (!e.target.value) {
       setSearchResults([]);
+      dispatch(resetSearch());
     }
   };
 
@@ -84,7 +92,12 @@ export const SearchBar = () => {
     <SearchWrapper>
       <SearchForm onSubmit={handleSubmit}>
         <SearchLabel htmlFor="search">Search</SearchLabel>
-        <SearchInput id="search" onChange={handleInput} />
+        <SearchInput
+          id="search"
+          value={searchQuery}
+          onChange={handleInput}
+          placeholder="Enter item name or category"
+        />
         <SearchButton type="submit" aria-label="Search button">
           <BiSearch size={25} color="#fff" />
         </SearchButton>

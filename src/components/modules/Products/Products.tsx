@@ -7,8 +7,9 @@ import {
   selectProductsObject,
   selectFilteredProducts,
   selectProductCount,
+  selectSearchQuery,
 } from "src/redux/products";
-import { fetchAll } from "src/api/productsAPI";
+import { fetchAll } from "src/redux/operations";
 import { Box } from "src/components/global/Box";
 import { Container } from "src/components/global/Container";
 import { Button } from "src/components/global/Button";
@@ -30,6 +31,7 @@ export const Products = () => {
 
   const productsObject = useSelector(selectProductsObject);
   const filteredProducts = useSelector(selectFilteredProducts);
+  const searchQuery = useSelector(selectSearchQuery);
   const isLoading = useSelector(selectIsLoading);
   const productCount = useSelector(selectProductCount);
 
@@ -73,7 +75,7 @@ export const Products = () => {
           gridGap={20}
           mt={40}
         >
-          {filteredProducts.length
+          {filteredProducts.length && searchQuery
             ? filteredProducts.map((productItem) => (
                 <ProductCard
                   key={productItem._id}
@@ -108,7 +110,7 @@ export const Products = () => {
           mt={80}
           gridGap={30}
         >
-          {!isLoading && shouldLoadMore && (
+          {!isLoading && shouldLoadMore && !filteredProducts.length && (
             <Button onClick={handleLoadMore} backgroundColor="#1E1E1E">
               Load More
             </Button>

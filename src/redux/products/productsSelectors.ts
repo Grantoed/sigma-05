@@ -3,6 +3,8 @@ import { RootState } from "../store";
 
 export const selectIsLoading = (state: RootState): boolean =>
   state.products.isLoading;
+export const selectSearchQuery = (state: RootState): string =>
+  state.products.searchQuery;
 export const selectProductsObject = (state: RootState): ProductsResponse =>
   state.products.productsObject;
 export const selectFilteredProducts = (
