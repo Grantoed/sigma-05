@@ -6,6 +6,8 @@ export const SearchWrapper = styled.div`
   align-items: center;
 `;
 
+export const SearchForm = styled.form``;
+
 export const SearchLabel = styled.label`
   position: absolute;
   white-space: nowrap;
@@ -51,5 +53,26 @@ export const SearchButton = styled.button`
   &:hover,
   &:focus {
     background-color: ${(p) => p.theme.colors.atch};
+  }
+`;
+
+export const SearchResultsWrapper = styled.div`
+  position: absolute;
+  top: 56px;
+  width: 100%;
+  background-color: ${(p) => p.theme.colors.mbgc};
+  border-bottom-left-radius: ${(p) => p.theme.radii.points};
+  border-bottom-right-radius: ${(p) => p.theme.radii.points};
+`;
+
+export const SearchList = styled.ul``;
+
+export const SearchItem = styled.li`
+  padding: 20px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.atc};
+    background-color: ${(p) => p.theme.colors.abgc};
   }
 `;

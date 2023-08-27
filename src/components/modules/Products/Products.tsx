@@ -5,6 +5,7 @@ import { AppDispatch } from "src/redux/store";
 import {
   selectIsLoading,
   selectProductsObject,
+  selectFilteredProducts,
   selectProductCount,
 } from "src/redux/products";
 import { fetchAll } from "src/api/productsAPI";
@@ -26,11 +27,15 @@ export const Products = () => {
 
   const { selectedProduct, isModalOpen, openModalWithProduct, closeModal } =
     useProductModal();
+
   const productsObject = useSelector(selectProductsObject);
+  const filteredProducts = useSelector(selectFilteredProducts);
   const isLoading = useSelector(selectIsLoading);
   const productCount = useSelector(selectProductCount);
+
   const shouldLoadMore =
     productCount > displayCount * nextPage - 1 || displayCount === 8;
+
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
 
   const handleLoadMore = (
@@ -57,7 +62,7 @@ export const Products = () => {
   };
 
   return (
-    <Section>
+    <Section id="products">
       <Container py={150}>
         <ProductsSubheading>Categories</ProductsSubheading>
         <ProductsHeading>Our Products</ProductsHeading>
@@ -68,18 +73,33 @@ export const Products = () => {
           gridGap={20}
           mt={40}
         >
-          {productsObject.products.slice(0, displayCount).map((productItem) => (
-            <ProductCard
-              key={productItem._id}
-              category={productItem.category}
-              imageURL={productItem.imageURL}
-              name={productItem.name}
-              priceOld={productItem.priceOld}
-              price={productItem.price}
-              rating={productItem.rating}
-              openModal={() => openModalWithProduct(productItem)}
-            />
-          ))}
+          {filteredProducts.length
+            ? filteredProducts.map((productItem) => (
+                <ProductCard
+                  key={productItem._id}
+                  category={productItem.category}
+                  imageURL={productItem.imageURL}
+                  name={productItem.name}
+                  priceOld={productItem.priceOld}
+                  price={productItem.price}
+                  rating={productItem.rating}
+                  openModal={() => openModalWithProduct(productItem)}
+                />
+              ))
+            : productsObject.products
+                .slice(0, displayCount)
+                .map((productItem) => (
+                  <ProductCard
+                    key={productItem._id}
+                    category={productItem.category}
+                    imageURL={productItem.imageURL}
+                    name={productItem.name}
+                    priceOld={productItem.priceOld}
+                    price={productItem.price}
+                    rating={productItem.rating}
+                    openModal={() => openModalWithProduct(productItem)}
+                  />
+                ))}
         </Box>
         <Box
           display="flex"
@@ -93,7 +113,7 @@ export const Products = () => {
               Load More
             </Button>
           )}
-          {displayCount > 8 && (
+          {!filteredProducts.length && displayCount > 8 && (
             <Button onClick={handleHideAll}>Hide All</Button>
           )}
         </Box>

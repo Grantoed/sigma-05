@@ -54,7 +54,7 @@ export const OrderForm = ({
       reset();
       dispatch(clearCart());
       navigate("/successful-order", { replace: true });
-      setOrderSubmittedSuccessfully(false); // Reset for any subsequent submissions.
+      setOrderSubmittedSuccessfully(false);
     }
   }, [orderSubmittedSuccessfully, reset, dispatch, navigate]);
 

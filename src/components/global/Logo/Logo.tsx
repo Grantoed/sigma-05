@@ -4,7 +4,7 @@ import logoImg from "src/images/logo.svg";
 
 export const Logo = () => {
   return (
-    <LogoLink to="/">
+    <LogoLink href="./">
       <LogoIcon src={logoImg} alt="logo" />
       Organick
     </LogoLink>

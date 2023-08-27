@@ -5,8 +5,47 @@ import { ProductsResponse } from "src/interfaces/productsResponse.interface";
 type FetchAllArgs = {
   page?: string;
   limit?: string;
-  query?: string;
+  q?: string;
 };
+
+export const fetchAllProducts = async ({ page, limit, q }: FetchAllArgs) => {
+  const params = new URLSearchParams();
+
+  if (page) {
+    params.append("page", page.toString());
+  }
+  if (limit) {
+    params.append("limit", limit.toString());
+  }
+  if (q) {
+    params.append("q", q);
+  }
+
+  const res = await server.get(`/products`, { params });
+  return res.data;
+};
+
+export const fetchAll = createAsyncThunk<ProductsResponse, FetchAllArgs>(
+  "products/fetchAll",
+  async (args, thunkAPI) => {
+    try {
+      return await fetchAllProducts(args);
+    } catch (e: any) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const searchProducts = createAsyncThunk<ProductsResponse, FetchAllArgs>(
+  "products/searchProducts",
+  async (args, thunkAPI) => {
+    try {
+      return await fetchAllProducts(args);
+    } catch (e: any) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
 // type GetByCategoryArgs = {
 //   categoryName: string;
@@ -16,29 +55,7 @@ type FetchAllArgs = {
 
 // Search all products. Use page & limit for pagination.
 // Use query to filter products by providing name or category
-export const fetchAll = createAsyncThunk<ProductsResponse, FetchAllArgs>(
-  "products/fetchAll",
-  async ({ page, limit, query }: FetchAllArgs, thunkAPI) => {
-    try {
-      const params = new URLSearchParams();
 
-      if (page) {
-        params.append("page", page.toString());
-      }
-      if (limit) {
-        params.append("limit", limit.toString());
-      }
-      if (query) {
-        params.append("query", query);
-      }
-
-      const res = await server.get(`/products`, { params });
-      return res.data;
-    } catch (e: any) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
 // Search all product by id.
 // export const fetchById = (async (id: string) => {
 //   try {

@@ -3,10 +3,11 @@ import { RootState } from "../store";
 
 export const selectIsLoading = (state: RootState): boolean =>
   state.products.isLoading;
-export const selectSearchQuery = (state: RootState): string =>
-  state.products.searchQuery;
 export const selectProductsObject = (state: RootState): ProductsResponse =>
   state.products.productsObject;
+export const selectFilteredProducts = (
+  state: RootState
+): ProductsResponse["products"] => state.products.filteredProducts;
 export const selectError = (state: RootState): string => state.products.error;
 export const selectProductCount = (state: RootState): number =>
   state.products.productsObject.count;
