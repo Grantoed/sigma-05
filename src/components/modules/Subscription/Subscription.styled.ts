@@ -24,7 +24,7 @@ export const SubscriptionWrapper = styled.div`
   border-radius: ${(p) => p.theme.radii.default};
 `;
 
-export const FormWrapper = styled.div`
+export const SubscriptionForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;

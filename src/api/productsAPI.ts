@@ -7,18 +7,22 @@ export type FetchAllArgs = {
 };
 
 export const fetchAllProducts = async ({ page, limit, q }: FetchAllArgs) => {
-  const params = new URLSearchParams();
+  try {
+    const params = new URLSearchParams();
 
-  if (page) {
-    params.append("page", page.toString());
-  }
-  if (limit) {
-    params.append("limit", limit.toString());
-  }
-  if (q) {
-    params.append("q", q);
-  }
+    if (page) {
+      params.append("page", page.toString());
+    }
+    if (limit) {
+      params.append("limit", limit.toString());
+    }
+    if (q) {
+      params.append("q", q);
+    }
 
-  const res = await server.get(`/products`, { params });
-  return res.data;
+    const res = await server.get(`/products`, { params });
+    return res.data;
+  } catch (e: any) {
+    throw e;
+  }
 };
