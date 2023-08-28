@@ -14,14 +14,14 @@ import { toast } from "react-toastify";
 export const Subscription = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target as typeof e.target & {
-      email: { value: string };
-    };
+    const form = e.target as HTMLFormElement;
+
     try {
       await subscribe(form.email.value);
       toast.success(
         "Thank you for subscribing to our newsletter. Please check your email!"
       );
+      form.reset();
     } catch (e: any) {
       const errorMessage =
         e.response?.data?.message ||
