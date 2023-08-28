@@ -20,3 +20,19 @@ export const Title = styled.h1`
   font-weight: ${(p) => p.theme.fontWeights.black};
   color: ${(p) => p.theme.colors.mtc};
 `;
+
+export const Link = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+  width: 220px;
+  height: 80px;
+  font-family: ${(p) => p.theme.fonts.mtf};
+  font-size: ${(p) => p.theme.fontSizes[2]};
+  font-weight: ${(p) => p.theme.fontWeights.bold};
+  border-radius: ${(p) => p.theme.radii.buttons};
+  background-color: ${(p) => p.theme.colors.ac};
+  color: ${(p) => p.theme.colors.mtc};
+`;
