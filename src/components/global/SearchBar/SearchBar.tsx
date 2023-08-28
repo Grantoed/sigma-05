@@ -1,15 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
 import { fetchAllProducts } from "src/api/productsAPI";
-import { searchProducts } from "src/redux/operations";
 import { useProductModal } from "src/hooks/useProductModal";
-import {
-  selectSearchQuery,
-  inputSearch,
-  resetSearch,
-} from "src/redux/products";
-import { AppDispatch } from "src/redux/store";
+import { SearchResultsModal } from "src/components/global/SearchResultsModal";
 import { ProductModal } from "src/components/global/ProductModal";
 import { BiSearch } from "react-icons/bi";
 import { Portal } from "src/components/global/Portal";
@@ -29,12 +21,9 @@ export const SearchBar = () => {
   const [searchResults, setSearchResults] = useState<
     ProductsResponse["products"]
   >([]);
+  const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const dispatch: AppDispatch = useDispatch<AppDispatch>();
   const resultsWrapper = useRef<HTMLDivElement | null>(null);
-  const searchQuery = useSelector(selectSearchQuery);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -45,9 +34,7 @@ export const SearchBar = () => {
         resultsWrapper.current.style.display = "none";
       }
     };
-
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -58,20 +45,10 @@ export const SearchBar = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target as typeof e.target & {
-      search: { value: string };
-    };
-    if (form.search.value) {
-      dispatch(searchProducts({ q: form.search.value }));
-    }
-    if (location.pathname !== "/") {
-      navigate("/");
-    }
+    setIsResultsModalOpen(true);
   };
 
   const handleInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(inputSearch(e.target.value));
-
     if (resultsWrapper.current) {
       resultsWrapper.current.style.display = "block";
     }
@@ -84,7 +61,6 @@ export const SearchBar = () => {
 
     if (!e.target.value) {
       setSearchResults([]);
-      dispatch(resetSearch());
     }
   };
 
@@ -94,7 +70,6 @@ export const SearchBar = () => {
         <SearchLabel htmlFor="search">Search</SearchLabel>
         <SearchInput
           id="search"
-          value={searchQuery}
           onChange={handleInput}
           placeholder="Enter item name or category"
         />
@@ -121,6 +96,15 @@ export const SearchBar = () => {
           <ProductModal
             onClose={closeModal}
             selectedProduct={selectedProduct}
+          />
+        </Portal>
+      )}
+      {isResultsModalOpen && (
+        <Portal onClose={() => setIsResultsModalOpen(false)}>
+          <SearchResultsModal
+            filteredProducts={searchResults}
+            openModalWithProduct={openModalWithProduct}
+            closeModal={() => setIsResultsModalOpen(false)}
           />
         </Portal>
       )}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchAllOrders } from "src/api/orderAPI";
 import { Box } from "src/components/global/Box";
+import { Loader } from "src/components/global/Loader";
 import { Container } from "src/components/global/Container";
 import { NavButton } from "src/components/global/NavButton";
 import { Order } from "src/interfaces/Order.interface";
@@ -64,7 +65,7 @@ const Admin = () => {
     <Box py={90}>
       <Container px={0}>
         <Heading>Orders</Heading>
-        {ordersData?.orders && (
+        {ordersData?.orders ? (
           <Box mt={60}>
             <StyledTable>
               <TableHead>
@@ -142,6 +143,8 @@ const Admin = () => {
               <NavButton to="/">To Homepage</NavButton>
             </Box>
           </Box>
+        ) : (
+          <Loader />
         )}
       </Container>
     </Box>

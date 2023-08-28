@@ -18,6 +18,7 @@ export const useProductModal = () => {
   return {
     selectedProduct,
     isModalOpen,
+    setIsModalOpen,
     openModalWithProduct,
     closeModal,
   };

@@ -5,9 +5,7 @@ import { AppDispatch } from "src/redux/store";
 import {
   selectIsLoading,
   selectProductsObject,
-  selectFilteredProducts,
   selectProductCount,
-  selectSearchQuery,
 } from "src/redux/products";
 import { fetchAll } from "src/redux/operations";
 import { Box } from "src/components/global/Box";
@@ -30,8 +28,6 @@ export const Products = () => {
     useProductModal();
 
   const productsObject = useSelector(selectProductsObject);
-  const filteredProducts = useSelector(selectFilteredProducts);
-  const searchQuery = useSelector(selectSearchQuery);
   const isLoading = useSelector(selectIsLoading);
   const productCount = useSelector(selectProductCount);
 
@@ -75,8 +71,10 @@ export const Products = () => {
           gridGap={20}
           mt={40}
         >
-          {filteredProducts.length && searchQuery
-            ? filteredProducts.map((productItem) => (
+          {productsObject.products.length > 0 &&
+            productsObject.products
+              .slice(0, displayCount)
+              .map((productItem) => (
                 <ProductCard
                   key={productItem._id}
                   category={productItem.category}
@@ -87,21 +85,7 @@ export const Products = () => {
                   rating={productItem.rating}
                   openModal={() => openModalWithProduct(productItem)}
                 />
-              ))
-            : productsObject.products
-                .slice(0, displayCount)
-                .map((productItem) => (
-                  <ProductCard
-                    key={productItem._id}
-                    category={productItem.category}
-                    imageURL={productItem.imageURL}
-                    name={productItem.name}
-                    priceOld={productItem.priceOld}
-                    price={productItem.price}
-                    rating={productItem.rating}
-                    openModal={() => openModalWithProduct(productItem)}
-                  />
-                ))}
+              ))}
         </Box>
         <Box
           display="flex"
@@ -110,12 +94,12 @@ export const Products = () => {
           mt={80}
           gridGap={30}
         >
-          {!isLoading && shouldLoadMore && !filteredProducts.length && (
+          {!isLoading && shouldLoadMore && (
             <Button onClick={handleLoadMore} backgroundColor="#1E1E1E">
               Load More
             </Button>
           )}
-          {!filteredProducts.length && displayCount > 8 && (
+          {displayCount > 8 && (
             <Button onClick={handleHideAll}>Hide All</Button>
           )}
         </Box>
