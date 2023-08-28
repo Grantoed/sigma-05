@@ -59,4 +59,8 @@ export const SubmitButton = styled.button`
   border-radius: ${(p) => p.theme.radii.buttons};
   background-color: ${(p) => p.theme.colors.mtc};
   color: ${(p) => p.theme.colors.mbgc};
+  &:disabled {
+    cursor: default;
+    background-color: ${(p) => p.theme.colors.dbtnc};
+  }
 `;
