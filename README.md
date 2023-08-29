@@ -15,18 +15,6 @@ npm start
 This starts the application in development mode.
 **Switch the BASE_URL from GCP url to localhost at src/api/default.ts** to access it in your browser at http://localhost:3000. Any edits you make will automatically reload the page. Lint errors, if any, will appear in the console.
 
-```bash
-npm test
-```
-
-This will launch the test runner in interactive watch mode.
-
-```bash
-npm run build
-```
-
-This command builds the app for production to the build folder. It bundles React in production mode and optimizes the build for performance. Once built, your app is ready for deployment!
-
 ## Features
 
 - **Product Search**: Paginated search functionality to efficiently find products.
